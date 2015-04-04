@@ -5,69 +5,8 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>Cadastro de Jogos</title>
-	<style>
-      html, body, #map-canvas {
-        height: 100%;
-        margin: 0px;
-        padding: 0px
-      }
-    </style>
-    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true"></script>
-    <script>
-// Note: This example requires that you consent to location sharing when
-// prompted by your browser. If you see a blank space instead of the map, this
-// is probably because you have denied permission for location sharing.
-
-var map;
-
-function initialize() {
-  var mapOptions = {
-    zoom: 15
-  };
-  map = new google.maps.Map(document.getElementById('map-canvas'),
-      mapOptions);
-
-  // Try HTML5 geolocation
-  if(navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(function(position) {
-      var pos = new google.maps.LatLng(position.coords.latitude,
-                                       position.coords.longitude);
-
-      var infowindow = new google.maps.InfoWindow({
-        map: map,
-        position: pos,
-        content: 'Location found using HTML5.'
-      });
-
-      map.setCenter(pos);
-    }, function() {
-      handleNoGeolocation(true);
-    });
-  } else {
-    // Browser doesn't support Geolocation
-    handleNoGeolocation(false);
-  }
-}
-
-function handleNoGeolocation(errorFlag) {
-  if (errorFlag) {
-    var content = 'Error: The Geolocation service failed.';
-  } else {
-    var content = 'Error: Your browser doesn\'t support geolocation.';
-  }
-
-  var options = {
-    map: map,
-    position: new google.maps.LatLng(60, 105),
-    content: content
-  };
-
-  var infowindow = new google.maps.InfoWindow(options);
-  map.setCenter(options.position);
-}
-
-google.maps.event.addDomListener(window, 'load', initialize);
-
+    <script src="http://maps.google.com/maps/api/js?sensor=true" type="text/javascript"></script>
+    <script src="<?= base_url('/assets/js/gmaps/gmaps.js') ?>" type="text/javascript"></script>
 </script>
 
 	<link rel="stylesheet" href="">
@@ -75,7 +14,6 @@ google.maps.event.addDomListener(window, 'load', initialize);
 	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 </head>
 <body>
-<div id="map-canvas"></div>
 <div class="modal-dialog">
 		<form action="<?= base_url('professor/inserirjogo/') ?>" method="POST" role="form">
 			<div class="modal-content">
@@ -120,8 +58,12 @@ google.maps.event.addDomListener(window, 'load', initialize);
 							
 						</select>
 					</div>
+					<input id="lat" type="hidden" name="lat">
+					<input id="lng" type="hidden" name="lng">
+					<input id="zoom" type="hidden" name="zoom">
+					<div style="height: 200px; width: 100%" id="map"></div>
+					<div class="modal-footer">
 
-				<div class="modal-footer">
 					<button type="submit" class="btn btn-primary">Cadastrar</button>
 				</div>
 			</div><!-- /.modal-content -->
@@ -134,5 +76,38 @@ google.maps.event.addDomListener(window, 'load', initialize);
 	<!-- Latest compiled and minified JS -->
 	<script src="//code.jquery.com/jquery.js"></script>
 	<script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+    <script type="text/javascript">
+	    /* Carga da instancia padrão do Google Maps */
+	    var teste;
+
+	    var map = new GMaps({
+	      el: '#map',
+	      lat: -12.043333,
+	      lng: -77.028333,
+	      center_changed: function(e) {
+      		document.getElementById('lat').value = e.center.lat();
+      		document.getElementById('lng').value = e.center.lng();
+      		document.getElementById('zoom').value = e.zoom;
+	      },
+	      zoom_changed: function(e) {
+      		document.getElementById('zoom').value = e.zoom;
+	      }
+	    });
+
+	    /* Geolocalização do Google Maps */
+		GMaps.geolocate({
+		  success: function(position) {
+		    map.setCenter(position.coords.latitude, position.coords.longitude);
+		  },
+		  error: function(error) {
+		    alert('Erro na geolocalização: '+error.message);
+		  },
+		  not_supported: function() {
+		    alert("Desculpe, seu navegador não suporta geolocalização, usando posição padrão.");
+		  }
+		});
+    </script>
+
 </body>
 </html>
