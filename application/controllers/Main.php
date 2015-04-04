@@ -6,10 +6,10 @@ class Main extends CI_Controller {
 	{
 		$this->load->model('usuarios');
 
-		var_dump($this->usuarios->listar());
+		//var_dump($this->usuarios->listar());
 
 		$data = array(
-			'message' => "Hello World"
+			'message' => "UCHALLENGE"
 		);
 		$this->load->view('main', $data);
 	}

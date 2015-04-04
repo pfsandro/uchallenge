@@ -9,8 +9,13 @@
 	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 </head>
 <body>
-	<h1><?= $message ?></h1>
-	<p><a href="<?= base_url('/main/login') ?>">Login</a></p>
+
+	<div class="page-header">
+            <img src="<?php echo base_url() . 'topo.png' ?>" class="img-responsive">
+    </div>
+
+	<div class="col-md-2"><a class="btn btn-primary btn-block" <a href="<?= base_url('/main/login') ?>"><h3>Login</h3></a></div>
+	
 
 	<!-- Latest compiled and minified JS -->
 	<script src="//code.jquery.com/jquery.js"></script>
