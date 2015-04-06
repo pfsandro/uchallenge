@@ -29,31 +29,32 @@
 					</div>
 					<div class="form-group">
 						<label for="areac">Area conhecimento</label>		
-						<select name="areac"  class"form-control" id="areac">
+						<select name="idareac"  class"form-control" id="areac">
 							<option value="0"> ----</option>
 							<?php foreach ($areasc as $areac){?>
-								<option value="<?php=$areac->id?>"><?=$areac->nome; ?></option>
+								<option value="<?=$areac->id;?>"><?=$areac->nome; ?></option>
 							<?php } ?>
 							
 						</select>
 					</div>
 					<div class="form-group">
 						<label for="areaa">Area avaliação</label>		
-						<select name="areaa"  class"form-control" id="areaa">
+						<select name="idareaa"  class"form-control" id="areaa">
 							<option value="0"> ----</option>
 							<?php foreach ($areasa as $areaa){?>
-								<option value="<?php=$areaa->id?>"><?=$areaa->nome; ?></option>
+								<option value="<?=$areaa->id;?>"><?=$areaa->nome; ?></option>
 							<?php } ?>
 							
 						</select>
 					</div>
 
 					<div class="form-group">
-						<label for="tema">Tema do Jogo</label>		
-						<select name="tema"  class"form-control" id="tema">
+						<label for="tema">Tema</label>		
+						<select name="idtema"  class"form-control" id="tema">
 							<option value="0"> ----</option>
 							<?php foreach ($temas as $tema){?>
-								<option value="<?php=$tema->id?>"><?=$tema->nome; ?></option>
+								<option value="<?=$tema->id;?>"><?=$tema->nome; ?></option>
+
 							<?php } ?>
 							
 						</select>
