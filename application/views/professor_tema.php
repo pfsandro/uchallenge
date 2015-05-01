@@ -75,21 +75,29 @@
              <hr>
         </div>
         <!-- /col-3 -->
+        
         <div class="col-sm-9">
-            <h4>Temas</h4>
+            <h4>Tema</h4>
             <hr>
-            <?php echo form_open('professor/inserirtema', 'id="form-area"'); ?>
- 
-    		<div class="col-lg-8 col-sm-6">
-    		<label for="nome">Nome:</label>
-                    <input class="form-control" type="text" name= "nome" value="<?php echo set_value('nome'); ?>" />
-                    <span class="text-danger"><?php echo form_error('nome'); ?></span>
-
-    				<input type="submit" name="cadastrar" value="Cadastrar" />        	
-        	</div>
-   		
-
-    		<?php echo form_close(); ?>
+    
+        <form action="<?= base_url('professor/inserirtema/') ?>" method="POST" role="form">
+        
+        <div class="modal-header">
+          <h4 class="modal-title">Inserir</h4>
+        </div>
+        <div class="modal-body">
+            
+        <div class="form-group">
+            <label for="nome">Nome</label>
+            <input type="text" name="nome" class="form-control" id="" placeholder="Digite a área de conhecimento">
+          </div>
+          
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary">Cadastrar</button>
+        </div>
+      
+        </form>
         </div>
      </div>
  </div>

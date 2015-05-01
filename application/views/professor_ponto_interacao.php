@@ -4,7 +4,7 @@
 	<meta name="viewport" content="initial-scale=1.0, user-scalable=no">
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Cadastro de Jogos</title>
+	<title>Pontos de interação</title>
     <script src="http://maps.google.com/maps/api/js?sensor=true" type="text/javascript"></script>
     <script src="<?= base_url('/assets/js/gmaps/gmaps.js') ?>" type="text/javascript"></script>
 </script>
@@ -81,55 +81,28 @@
         </div>
         <!-- /col-3 -->
         <div class="col-sm-9">
-            <h4>Game</h4>
+            <h4>Definir Interação com o Ambiente</h4>
             <hr>
 
-		<form action="<?= base_url('professor/inserirjogo/') ?>" method="POST" role="form">
+		<form action="<?= base_url('professor/inseririnteracao/') ?>" method="POST" role="form">
 				<div class="modal-header">
-					<h4 class="modal-title">New game</h4>
+					<h4 class="modal-title">Cadastrar interação</h4>
 				</div>
 				<div class="modal-body">
 						
-					<div class="form-group">
-
-						<label for="nome">Name</label>
-						<input type="text" name="nome" class="form-control" id="nome" placeholder="Digite Nome do Jogo">
-					</div>
-				<div class="row">
-					<div class="col-md-5">	
-						<div class="form-group">
-							<label for="areac">Area of knowledge</label>		
-							<select name="idareac"  class"form-control" id="areac">
-								<option value="0"> ----</option>
-								<?php foreach ($areasc as $areac){?>
-								<option value="<?=$areac->id;?>"><?=$areac->nome; ?></option>
-								<?php } ?>
-							</select>
-						</div>
-					</div>
-					<div class="col-md-4">
-						<div class="form-group">
-							<label for="areaa">Assessment area</label>		
-							<select name="idareaa"  class"form-control" id="areaa">
-								<option value="0"> ----</option>
-								<?php foreach ($areasa as $areaa){?>
-								<option value="<?=$areaa->id;?>"><?=$areaa->nome; ?></option>
-								<?php } ?>
-							</select>
-						</div>
-					</div>
+										
 					<div class="col-md-3">	
 						<div class="form-group">
-							<label for="tema">theme</label>		
+							<label for="Jogo">Jogo</label>		
 							<select name="idtema"  class"form-control" id="tema">
 								<option value="0"> ----</option>
-								<?php foreach ($temas as $tema){?>
-								<option value="<?=$tema->id;?>"><?=$tema->nome; ?></option>
+								<?php foreach ($jogos as $jogo){?>
+								<option value="<?=$jogo->id;?>"><?=$jogo->nome; ?></option>
 								<?php } ?>
 							</select>
 						</div>
 					</div>
-				</div>		
+				<		
 					<input id="lat" type="hidden" name="lat">
 					<input id="lng" type="hidden" name="lng">
 					<input id="zoom" type="hidden" name="zoom">
