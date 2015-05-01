@@ -118,7 +118,7 @@
 	<!-- Latest compiled and minified JS -->
 	<script src="//code.jquery.com/jquery.js"></script>
 	<script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-  <script src="assets/js/jquery.dataTables.min.js"></script>
+  <script src="<?= base_url('assets/js/jquery.dataTables.min.js') ?>"></script>
 
   <script src="/javascripts/application.js" type="text/javascript">
     $(document).ready(function() {
