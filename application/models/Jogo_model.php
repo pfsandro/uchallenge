@@ -16,16 +16,18 @@ class Jogo_model extends CI_Model {
 
      function inserir($data) {
        return $this->db->insert('jogos', $data);
+
+    }
+
+    function idjogo() {
+        $query=$this->db->get('jogos');
+        return $query->mysql_insert_id();
     }
  
 	function listar() {
 		$query = $this->db->get('jogos');
 		return $query->result();
 
-    function retornaarea() {
-        $$this->db->order_by ("nome", "asc");
-        $consulta = $this->db->get("areaconhecimento");
-        return $consulta;
-    }    
+     
 	}
 }

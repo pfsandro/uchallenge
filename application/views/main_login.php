@@ -8,7 +8,7 @@
 	<!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 </head>
-<body background="<?php echo base_url() . 'fundo.png' ?>">
+<body background="<?php echo base_url() . 'fundo.jpg' ?>">
 	<div class="modal-dialog">
 		<form action="<?= base_url('main/checkLogin/') ?>" method="POST" role="form">
 			<div class="modal-content">
