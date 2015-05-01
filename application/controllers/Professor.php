@@ -79,6 +79,15 @@ class Professor extends CI_Controller {
 		$this->load->view('professor_quiz',$dados);
 		
 	}
+	public function interacao(){
+		$this->load->library('form_validation');	
+		$dados = array(
+			'jogos' => $this->db->get('jogos')->result(),
+		);	
+
+		$this->load->view('professor_ponto_interacao',$dados);
+		
+	}
 
 	public function quizl(){
 		$this->load->model('quiz_model');

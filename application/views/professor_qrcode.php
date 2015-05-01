@@ -1,14 +1,8 @@
-<!DOCTYPE html>
 <html>
 <head>
-	<meta name="viewport" content="initial-scale=1.0, user-scalable=no">
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Lista de Ações</title>
-    <script src="http://maps.google.com/maps/api/js?sensor=true" type="text/javascript"></script>
-    <script src="<?= base_url('/assets/js/gmaps/gmaps.js') ?>" type="text/javascript"></script>
-</script>
-
+	<title><?= $titulo ?></title>
 	<link rel="stylesheet" href="">
 	<!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
@@ -81,47 +75,16 @@
         </div>
         <!-- /col-3 -->
         <div class="col-sm-9">
-            <h4>Lista</h4>
+            <h4>Gerar QRcode</h4>
             <hr>
-            <div class="col-md-9">
-				<table class="table table-striped">
-				<tr>
-					<th> ID Ação </th>
-					<th> Questão</th>
-					<th> Objetivo Pedagógico </th>
-					<th> Alterar </th>
-					<th> Excluir</th>
-          <th> Interação Ambiente</th>
-          <th> QRcode</th>
-				</tr>
-			<?php foreach ($acoes as $acao) {?>
-				
-			<tr>
-				<th><?=$acao->id;?></th>
-				<th><?=$acao->nome;?></th>	
-				<th><?=$acao->objetivopedagogico;?></th>	
-				<th><a href="<?=base_url('professor/alterarq/'.$acao->id)?>" class="btn btn-primary">Alterar</a></th>
-				<th><a href="<?=base_url('professor/excluirq/'.$acao->id)?>" class="btn btn-danger" onclick="return confirm('Deseja realmente excluir registro?');">excluir</a></th>	
-				<th><a href="<?=base_url('professor/interacao/'.$acao->id)?>" class="btn btn-primary">Associar</a></th>
-        <th><a href="<?=base_url('professor/interacao/'.$acao->id)?>" class="btn btn-primary">Gerar</a></th>
-						
-			</tr>
-				<?php }?>
-	</table>	
-  
-</div>
-
-
-
         </div>
      </div>
  </div>
 
- 	    
+
 	<!-- Latest compiled and minified JS -->
 	<script src="//code.jquery.com/jquery.js"></script>
+  <script src="assets/js/bootstrap-dropdown.js"></script>
 	<script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-
-    
 </body>
 </html>
