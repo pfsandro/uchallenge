@@ -85,28 +85,32 @@
             <hr>
             <div class="col-md-9">
 				<table id="lista" class="table table-striped">
-				<tr>
-					<th> ID Ação </th>
-					<th> Questão</th>
-					<th> Objetivo Pedagógico </th>
-					<th> Alterar </th>
-					<th> Excluir</th>
-          <th> Interação Ambiente</th>
-          <th> QRcode</th>
-				</tr>
-			<?php foreach ($acoes as $acao) {?>
-				
-			<tr>
-				<th><?=$acao->id;?></th>
-				<th><?=$acao->nome;?></th>	
-				<th><?=$acao->objetivopedagogico;?></th>	
-				<th><a href="<?=base_url('professor/alterarq/'.$acao->id)?>" class="btn btn-primary">Alterar</a></th>
-				<th><a href="<?=base_url('professor/excluirq/'.$acao->id)?>" class="btn btn-danger" onclick="return confirm('Deseja realmente excluir registro?');">excluir</a></th>	
-				<th><a href="<?=base_url('professor/interacao/'.$acao->id)?>" class="btn btn-primary">Associar</a></th>
-        <th><a href="<?=base_url('professor/interacao/'.$acao->id)?>" class="btn btn-primary">Gerar</a></th>
-						
-			</tr>
-				<?php }?>
+        <thead>
+  				<tr>
+  					<th> ID Ação </th>
+  					<th> Questão</th>
+  					<th> Objetivo Pedagógico </th>
+  					<th> Alterar </th>
+  					<th> Excluir</th>
+            <th> Interação Ambiente</th>
+            <th> QRcode</th>
+  				</tr>
+        </thead>
+        <tbody>
+  			<?php foreach ($acoes as $acao) {?>
+  				
+    			<tr>
+    				<td><?=$acao->id;?></td>
+    				<td><?=$acao->nome;?></td>	
+    				<td><?=$acao->objetivopedagogico;?></td>	
+    				<td><a href="<?=base_url('professor/alterarq/'.$acao->id)?>" class="btn btn-primary">Alterar</a></td>
+    				<td><a href="<?=base_url('professor/excluirq/'.$acao->id)?>" class="btn btn-danger" onclick="return confirm('Deseja realmente excluir registro?');">excluir</a></td>	
+    				<td><a href="<?=base_url('professor/interacao/'.$acao->id)?>" class="btn btn-primary">Associar</a></td>
+            <td><a href="<?=base_url('professor/interacao/'.$acao->id)?>" class="btn btn-primary">Gerar</a></td>
+    						
+    			</tr>
+  				<?php }?>
+        </tbody>
 	</table>	
   
 </div>
