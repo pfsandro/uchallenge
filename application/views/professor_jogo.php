@@ -81,24 +81,24 @@
         </div>
         <!-- /col-3 -->
         <div class="col-sm-9">
-            <h4>Jogo</h4>
+            <h4>Game</h4>
             <hr>
 
 		<form action="<?= base_url('professor/inserirjogo/') ?>" method="POST" role="form">
 				<div class="modal-header">
-					<h4 class="modal-title">Novo Jogo</h4>
+					<h4 class="modal-title">New game</h4>
 				</div>
 				<div class="modal-body">
 						
 					<div class="form-group">
 
-						<label for="nome">Nome</label>
+						<label for="nome">Name</label>
 						<input type="text" name="nome" class="form-control" id="nome" placeholder="Digite Nome do Jogo">
 					</div>
 				<div class="row">
 					<div class="col-md-5">	
 						<div class="form-group">
-							<label for="areac">Area conhecimento</label>		
+							<label for="areac">Area of knowledge</label>		
 							<select name="idareac"  class"form-control" id="areac">
 								<option value="0"> ----</option>
 								<?php foreach ($areasc as $areac){?>
@@ -109,7 +109,7 @@
 					</div>
 					<div class="col-md-4">
 						<div class="form-group">
-							<label for="areaa">Area avaliação</label>		
+							<label for="areaa">Assessment area</label>		
 							<select name="idareaa"  class"form-control" id="areaa">
 								<option value="0"> ----</option>
 								<?php foreach ($areasa as $areaa){?>
@@ -120,7 +120,7 @@
 					</div>
 					<div class="col-md-3">	
 						<div class="form-group">
-							<label for="tema">Tema</label>		
+							<label for="tema">theme</label>		
 							<select name="idtema"  class"form-control" id="tema">
 								<option value="0"> ----</option>
 								<?php foreach ($temas as $tema){?>
@@ -136,7 +136,7 @@
 					<div style="height: 200px; width: 100%" id="map"></div>
 					<div class="modal-footer">
 
-					<button type="submit" class="btn btn-primary">Cadastrar</button>
+					<button type="submit" class="btn btn-primary">Subscribe</button>
 				</div>
 			</form>
 	     </div>
