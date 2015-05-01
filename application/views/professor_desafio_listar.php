@@ -84,7 +84,7 @@
             <h4>Lista</h4>
             <hr>
             <div class="col-md-9">
-				<table class="table table-striped">
+				<table id="lista" class="table table-striped">
 				<tr>
 					<th> ID Ação </th>
 					<th> Questão</th>
@@ -121,7 +121,13 @@
 	<!-- Latest compiled and minified JS -->
 	<script src="//code.jquery.com/jquery.js"></script>
 	<script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+  <script src="assets/js/jquery.dataTables.min.js"></script>
 
+  <script src="/javascripts/application.js" type="text/javascript">
+    $(document).ready(function() {
+      $('#lista').dataTable();
+    } );
+  </script>
     
 </body>
 </html>
