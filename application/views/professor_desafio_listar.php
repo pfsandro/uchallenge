@@ -12,6 +12,8 @@
 	<link rel="stylesheet" href="">
 	<!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+  <link rel="stykesheet" href="<?= base_url('/assets/css/jquery.dataTables.min.css')?>"
+
 </head>
 <body>
 <div id="top-nav" class="navbar navbar-inverse navbar-static-top">
@@ -83,37 +85,36 @@
         <div class="col-sm-9">
             <h4>Lista</h4>
             <hr>
-            <div class="col-md-9">
-				<table id="lista" class="table table-striped">
-        <thead>
-  				<tr>
-  					<th> ID Ação </th>
-  					<th> Questão</th>
-  					<th> Objetivo Pedagógico </th>
-  					<th> Alterar </th>
-  					<th> Excluir</th>
-            <th> Interação Ambiente</th>
-            <th> QRcode</th>
-  				</tr>
-        </thead>
-        <tbody>
-  			<?php foreach ($acoes as $acao) {?>
+            
+				  <table id="lista" class="table table-striped">
+            <thead>
+  				    <tr>
+  					     <th> Questão</th>
+  					     <th> Objetivo Pedagógico </th>
+                 <th> Tipo </th>
+  					     <th> Alterar </th>
+  					     <th> Excluir</th>
+                 <th> Interação Ambiente</th>
+                 <th> QRcode</th>
+  				    </tr>
+            </thead>
+            <tbody>
+  			     <?php foreach ($acoes as $acao) {?>
   				
-    			<tr>
-    				<td><?=$acao->id;?></td>
-    				<td><?=$acao->nome;?></td>	
-    				<td><?=$acao->objetivopedagogico;?></td>	
-    				<td><a href="<?=base_url('professor/alterarq/'.$acao->id)?>" class="btn btn-primary">Alterar</a></td>
-    				<td><a href="<?=base_url('professor/excluirq/'.$acao->id)?>" class="btn btn-danger" onclick="return confirm('Deseja realmente excluir registro?');">excluir</a></td>	
-    				<td><a href="<?=base_url('professor/interacao/'.$acao->id)?>" class="btn btn-primary">Associar</a></td>
-            <td><a href="<?=base_url('professor/interacao/'.$acao->id)?>" class="btn btn-primary">Gerar</a></td>
-    						
-    			</tr>
+    			   <tr>
+    				    <td><?=$acao->nome;?></td>
+    				    <td><?=$acao->objetivopedagogico;?></td>	
+    				    <td><?=$acao->tipo;?></td>	
+    				    <td><a href="<?=base_url('professor/alterarq/'.$acao->id)?>" class="btn btn-primary btn-small">Alterar</a></td>
+    				    <td><a href="<?=base_url('professor/excluirq/'.$acao->id)?>" class="btn btn-danger" onclick="return confirm('Deseja realmente excluir registro?');">excluir</a></td>	
+    				    <td><a href="<?=base_url('professor/interacao/'.$acao->id)?>" class="btn btn-primary">Associar</a></td>
+                <td><a href="<?=base_url('professor/interacao/'.$acao->id)?>" class="btn btn-primary">Gerar</a></td>
+    				 </tr>
   				<?php }?>
         </tbody>
 	</table>	
   
-</div>
+
 
 
 
@@ -127,9 +128,24 @@
 	<script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
   <script src="<?= base_url('assets/js/jquery.dataTables.min.js') ?>"></script>
 
-  <script src="/javascripts/application.js" type="text/javascript">
+  <script type="text/javascript">
     $(document).ready(function() {
-      $('#lista').dataTable();
+      $('#lista').dataTable( {
+        "language": {
+            "lengthMenu": "Mostrar _MENU_ Registros por página",
+            "search" : "Pesquisar",
+            "zeroRecords": " Nada Encontrado",
+            "info": "Mostrando página _PAGE_ de _PAGES_",
+            "infoEmpty": "Nenhum registro Encontrado",
+            "infoFiltered": "(registos Filtrados de _MAX_ total records)",
+            "paginate" : {
+            "next" : "Próximo" ,
+            "previous" : "Anterior" ,
+            "first" : "Primeiro" ,
+            "last" : "Último" },
+        }
+    } );
+
     } );
   </script>
     

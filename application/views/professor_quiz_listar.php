@@ -12,6 +12,7 @@
 	<link rel="stylesheet" href="">
 	<!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+  <link rel="stykesheet" href="<?= base_url('/assets/css/jquery.dataTables.min.css')?>"
 </head>
 <body>
 <div id="top-nav" class="navbar navbar-inverse navbar-static-top">
@@ -83,7 +84,7 @@
         <div class="col-sm-9">
             <h4>Lista</h4>
             <hr>
-            <div class="col-md-9">
+            
 				<table id="lista" class="table table-striped">
         <thead>
   				<tr>
@@ -110,7 +111,7 @@
         </tbody>
 	</table>	
   
-</div>
+
 
 
 
@@ -124,7 +125,7 @@
 	<script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
   <script src="<?= base_url('assets/js/jquery.dataTables.min.js') ?>"></script>
 
-  <script src="/javascripts/application.js" type="text/javascript">
+  <script type="text/javascript">
     $(document).ready(function() {
       $('#lista').dataTable();
     } );
