@@ -108,7 +108,7 @@
     				    <td><a href="<?=base_url('professor/alterarq/'.$acao->id)?>" class="btn btn-primary btn-small">Alterar</a></td>
     				    <td><a href="<?=base_url('professor/excluirq/'.$acao->id)?>" class="btn btn-danger" onclick="return confirm('Deseja realmente excluir registro?');">excluir</a></td>	
     				    <td><a href="<?=base_url('professor/interacao/'.$acao->id)?>" class="btn btn-primary">Associar</a></td>
-                <td><a href="<?=base_url('professor/interacao/'.$acao->id)?>" class="btn btn-primary">Gerar</a></td>
+                <td><a href="<?=base_url('professor/gerarqr/'.$acao->id)?>" class="btn btn-primary">Gerar</a></td>
     				 </tr>
   				<?php }?>
         </tbody>

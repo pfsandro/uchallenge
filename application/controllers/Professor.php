@@ -88,6 +88,18 @@ class Professor extends CI_Controller {
 		$this->load->view('professor_ponto_interacao',$dados);
 		
 	}
+	public function gerarqr($id=null){
+		$this->db->where('id',$id);
+		$data['acoes']=$this->db->get('acoes')->result();
+		$this->load->view('professor_qrcode',$data);
+		
+	}
+
+	public function qrcode(){
+		
+		$this->load->view('professor_qrcode1');
+		
+	}
 
 	public function quizl(){
 		$this->load->model('quiz_model');

@@ -2,7 +2,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title><?= $titulo ?></title>
+	<title>Gerar QRcode</title>
 	<link rel="stylesheet" href="">
 	<!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
@@ -77,14 +77,35 @@
         <div class="col-sm-9">
             <h4>Gerar QRcode</h4>
             <hr>
-        </div>
+           
+         <form action="<?= base_url('professor/qrcode') ?>" method="POST" role="form">
+             
+            <?php echo 'Dados: <input name="data" value="'.(isset($_REQUEST['data'])?htmlspecialchars($_REQUEST['data']):'$acoes[0]->nome').'" />&nbsp;'?>
+          
+            ECC:&nbsp;<select name="level">
+            <option value="L"'.(($errorCorrectionLevel=='L')?' selected':'').'>L - smallest</option>
+            <option value="M"'.(($errorCorrectionLevel=='M')?' selected':'').'>M</option>
+            <option value="Q"'.(($errorCorrectionLevel=='Q')?' selected':'').'>Q</option>
+            <option value="H"'.(($errorCorrectionLevel=='H')?' selected':'').'>H - best</option>
+            </select>&nbsp;
+             Size:&nbsp;<select name="size">
+        
+            <?php
+            for($i=10;$i<=20;$i++)
+              echo '<option value="'.$i.'"'.(($matrixPointSize==$i)?' selected':'').'>'.$i.'</option>';?>
+        
+            </select>
+            <input type="submit" value="GENERATE">
+          </form><hr/>
+        
+      
      </div>
  </div>
 
 
 	<!-- Latest compiled and minified JS -->
 	<script src="//code.jquery.com/jquery.js"></script>
-  <script src="assets/js/bootstrap-dropdown.js"></script>
+
 	<script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 </body>
 </html>
