@@ -128,8 +128,14 @@
 								<?php } ?>
 							</select>
 						</div>
+						
 					</div>
-				</div>		
+				</div>
+					<input type="file" name="userfile" size="20" />
+
+						<br/>
+
+					<input type="submit" value="upload" />	
 					<div class="modal-footer">
 
 					<button type="submit" class="btn btn-primary">Cadastrar</button>
