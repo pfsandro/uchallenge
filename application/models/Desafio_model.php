@@ -17,8 +17,8 @@ class Desafio_model extends CI_Model {
        return $this->db->insert('respostas', $dados);
     }
 
-    function listar() {
-        $this->db->select('*');
+    function listar() 
+        $this->db->select('acoes.id, acoes.tipo, acoes.objetivopedagogico, tema.id as tema_id, tema.nome as tema');
         $this->db->from('acoes');
         $this->db->join('tema', 'acoes.tema_id = tema.id');
         $this->db->where('tipo', 'D');
