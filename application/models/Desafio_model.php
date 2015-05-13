@@ -18,10 +18,11 @@ class Desafio_model extends CI_Model {
     }
 
     function listar() {
-        $this->db->where('tipo', 'D');
-        $this->db->or_where('tipo', 'P');
+        $this->db->select('*');
         $this->db->from('acoes');
         $this->db->join('tema', 'acoes.tema_id = tema.id');
+        $this->db->where('tipo', 'D');
+        $this->db->or_where('tipo', 'P');
         $query = $this->db->get();
         var_dump($query->result());
         return $query->result();
