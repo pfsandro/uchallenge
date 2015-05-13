@@ -18,7 +18,8 @@ class Desafio_model extends CI_Model {
     }
 
     function listar() {
-        $this->db->where('tipo IN', '(D,P)');
+        $this->db->where('tipo', 'D');
+        $this->db->or_where('tipo', 'P');
         $query = $this->db->get('acoes');
         return $query->result();
 
