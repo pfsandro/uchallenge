@@ -18,8 +18,8 @@ class Quiz_model extends CI_Model {
     }
 
 	function listar() {
-        $tipo="Q";
-        $query = $this->db->get_where('acoes', array('tipo'=>$tipo));
+        $this->db->where('tipo', 'Q');
+        $query = $this->db->get('acoes');
         return $query->result();
 
      
