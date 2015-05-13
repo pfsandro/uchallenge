@@ -78,7 +78,7 @@
             <h4>Gerar QRcode</h4>
             <hr>
            
-         <form action="<?= base_url('professor/qrcode') ?>" method="POST" role="form">
+         <form  target="_blank" action="<?= base_url('professor/qrcode') ?>" method="POST" role="form">
              
             <?php echo 'Dados: <input name="data" value="'.(isset($_REQUEST['data'])?htmlspecialchars($_REQUEST['data']):'$acoes[0]->nome').'" />&nbsp;'?>
           

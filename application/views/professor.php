@@ -77,6 +77,9 @@
         <div class="col-sm-9">
             <h4>Home</h4>
             <hr>
+            O UCHALLENGE é um modelo para construção de jogos sérios e ubíquos, com foco em uma metodologia de aprendizagem baseada em problemas. 
+            O modelo permite ao professor a criação de jogos baseados em problemas e a adaptação de tais jogos a 
+            cenários do mundo real, utilizando esse contexto para possibilitar a interação com situações reais desse ambiente.
         </div>
      </div>
  </div>
