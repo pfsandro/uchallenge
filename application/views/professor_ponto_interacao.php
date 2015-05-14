@@ -125,12 +125,12 @@
         var jogos = [];
       <?php foreach ($jogos as $jogo){?>
         jogos.push({
-          id: <?php echo $jogo->id; ?>
-          jogo: <?php echo $jogo->jogo; ?>
-          tema_id: <?php echo $jogo->tema_id; ?>
-          longitude: <?php echo $jogo->longitude; ?>
-          latitude: <?php echo $jogo->latitude; ?>
-          zoom: <?php echo $jogo->zoom; ?>
+          id: <?php echo $jogo->id; ?>,
+          jogo: <?php echo $jogo->jogo; ?>,
+          tema_id: <?php echo $jogo->tema_id; ?>,
+          longitude: <?php echo $jogo->longitude; ?>,
+          latitude: <?php echo $jogo->latitude; ?>,
+          zoom: <?php echo $jogo->zoom; ?>,
         });
       <?php } ?>
         $scope.jogos = jogos;
