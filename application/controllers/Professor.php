@@ -79,10 +79,19 @@ class Professor extends CI_Controller {
 		$this->load->view('professor_quiz',$dados);
 		
 	}
-	public function interacao(){
-		$this->load->library('form_validation');	
+	public function interacao($id){
+		$this->load->library('form_validation');
+
+		// Colocar em uma model!
+		$this->db->select('jogos.id, jogos.nome as jogo, jogos.tema_id, coordmapa.longitude, coordmapa.latitude, coordmapa.zoom');
+		$this->db->join('coordmapa', 'jogos.coordmapa_id = coordmapa.id');
+		$this->db->join('acoes', 'jogos.tema_id = acoes.tema_id');
+		$this->db->where('acoes.id', $id);
+		$query = $this->db->get('jogos');
+		var_dump($query->result());
+
 		$dados = array(
-			'jogos' => $this->db->get('jogos')->result(),
+			'jogos' => $query->result(),
 		);	
 
 		$this->load->view('professor_ponto_interacao',$dados);
