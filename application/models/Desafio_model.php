@@ -18,13 +18,14 @@ class Desafio_model extends CI_Model {
     }
 
     function listar() 
-        $this->db->select('acoes.id, acoes.tipo, acoes.objetivopedagogico, tema.id as tema_id, tema.nome as tema');
+    {
+        $this->db->select('acoes.nome, acoes.id, acoes.tipo, acoes.objetivopedagogico, tema.id as tema_id, tema.nome as tema');
         $this->db->from('acoes');
         $this->db->join('tema', 'acoes.tema_id = tema.id');
         $this->db->where('tipo', 'D');
         $this->db->or_where('tipo', 'P');
         $query = $this->db->get();
-        var_dump($query->result());
+       // var_dump($query->result());
         return $query->result();
 
      

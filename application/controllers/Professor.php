@@ -88,7 +88,7 @@ class Professor extends CI_Controller {
 		$this->db->join('acoes', 'jogos.tema_id = acoes.tema_id');
 		$this->db->where('acoes.id', $id);
 		$query = $this->db->get('jogos');
-		var_dump($query->result());
+		//var_dump($query->result());
 
 		$dados = array(
 			'jogos' => $query->result(),

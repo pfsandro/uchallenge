@@ -80,8 +80,9 @@
            
          <form  target="_blank" action="<?= base_url('professor/qrcode') ?>" method="POST" role="form">
              
-            <?php echo 'Dados: <input name="data" value="'.(isset($_REQUEST['data'])?htmlspecialchars($_REQUEST['data']):'$acoes[0]->nome').'" />&nbsp;'?>
-          
+            <?php echo 'Dados: </br><textarea rows="4" cols="30" name="data" value="'.(isset($_REQUEST['data'])?htmlspecialchars($_REQUEST['data']):$acoes[0]->nome).'" /></textarea>;'?>
+            
+            </textarea>
             ECC:&nbsp;<select name="level">
             <option value="L"'.(($errorCorrectionLevel=='L')?' selected':'').'>L - smallest</option>
             <option value="M"'.(($errorCorrectionLevel=='M')?' selected':'').'>M</option>
