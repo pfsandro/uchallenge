@@ -91,21 +91,16 @@
 				<div class="modal-body">
 						
 										
-					<div class="col-md-3">	
-						<div class="form-group">
-							<label for="Jogo">Jogo</label>		
-							<select name="idtema"  class"form-control" id="tema">
-								<option value="0"> ----</option>
-								<?php foreach ($jogos as $jogo){?>
-								<option value="<?=$jogo->id;?>"><?=$jogo->nome; ?></option>
-								<?php } ?>
+					<div class="col-md-3" ng-app="mapa">	
+						<div class="form-group" ng-controller="mapaCtrl">
+							<label for="Jogo">Jogo</label>
+							<select name="idtema" ng-model="jogo" ng-change="setCenter(jogo)" class"form-control" id="tema">
+								<option value="0">----</option>
+								<option value="{{j.id}}" ng-repeat="j in jogos">{{j.jogo}}</option>
 							</select>
 						</div>
 					</div>
-				<		
-					<input id="lat" type="hidden" name="lat">
-					<input id="lng" type="hidden" name="lng">
-					<input id="zoom" type="hidden" name="zoom">
+
 					<div style="height: 200px; width: 100%" id="map"></div>
 					<div class="modal-footer">
 
@@ -121,9 +116,32 @@
     
 	<!-- Latest compiled and minified JS -->
 	<script src="//code.jquery.com/jquery.js"></script>
-	<script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+  <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
 
     <script type="text/javascript">
+
+      angular.model('mapa').controller('mapaCtrl', function($scope){
+        var jogos = [];
+      <?php foreach ($jogos as $jogo){?>
+        jogos.push({
+          id: <?php echo $jogo->id; ?>
+          jogo: <?php echo $jogo->jogo; ?>
+          tema_id: <?php echo $jogo->tema_id; ?>
+          longitude: <?php echo $jogo->longitude; ?>
+          latitude: <?php echo $jogo->latitude; ?>
+          zoom: <?php echo $jogo->zoom; ?>
+        });
+      <?php } ?>
+        $scope.jogos = jogos;
+        $scope.setCenter = function(id){
+          var jogo = jogos.filter(function(j){
+            return j.id == id;
+          });
+          map.setCenter(jogo[0].latitude, jogo[0].longitude);
+        };
+      });
+
 	    /* Carga da instancia padrão do Google Maps */
 	    var teste;
 
@@ -131,14 +149,6 @@
 	      el: '#map',
 	      lat: -12.043333,
 	      lng: -77.028333,
-	      center_changed: function(e) {
-      		document.getElementById('lat').value = e.center.lat();
-      		document.getElementById('lng').value = e.center.lng();
-      		document.getElementById('zoom').value = e.zoom;
-	      },
-	      zoom_changed: function(e) {
-      		document.getElementById('zoom').value = e.zoom;
-	      }
 	    });
 
 	    /* Geolocalização do Google Maps */
