@@ -121,7 +121,7 @@
 
     <script type="text/javascript">
 
-      angular.model('mapa').controller('mapaCtrl', function($scope){
+      angular.module('mapa').controller('mapaCtrl', function($scope){
         var jogos = [];
       <?php foreach ($jogos as $jogo){?>
         jogos.push({
