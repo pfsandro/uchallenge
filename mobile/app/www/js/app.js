@@ -22,6 +22,24 @@ angular.module('uchallenge', ['ionic'])
   };
 })
 
+.factory('loginService', function($http){
+  var url = 'http://localhost:34435/api/';
+  var userInfo = {};
+  return {
+    login: function(user, password) {
+      var data = 'nome=' + user + '&senha=' + password + '';
+      $http.defaults.headers.post["Content-Type"] = "application/x-www-form-urlencoded";
+      return $http.post(url + 'login/', data).then(function(user) {
+        userInfo = user.data;
+        return user;
+      });
+    },
+    isLogged: function() {
+      return userInfo && userInfo.logado > 0 ? true : false;
+    }
+  };
+})
+
 .config(function($stateProvider, $urlRouterProvider) {
 
   $stateProvider
