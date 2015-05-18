@@ -67,9 +67,18 @@ angular.module('uchallenge', ['ionic'])
   $urlRouterProvider.otherwise('/login');
 })
 
-.controller('loginCtrl', function($scope, navigationService){
+.controller('loginCtrl', function($scope, navigationService, loginService){
   angular.extend($scope, {
-    navigationService: navigationService
+    navigationService: navigationService,
+    login: function(user,password) {
+      loginService.login(user,password).then(function(user){
+        if (user && user.data.logado > 0) {
+          navigationService.go('/main');
+        } else {
+          $scope.errorMsg = "ERRO: Verifique seu usuário ou senha";
+        };
+      })
+    }
   });
 })
 
