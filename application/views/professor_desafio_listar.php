@@ -90,7 +90,7 @@
             <thead>
   				    <tr>
   					     <th> Questão</th>
-  					     <th> Objetivo Pedagógico </th>
+  					     <th> Tema </th>
                  <th> Tipo </th>
   					     <th> Alterar </th>
   					     <th> Excluir</th>
@@ -103,8 +103,8 @@
   				
     			   <tr>
     				    <td><?=$acao->nome;?></td>
-    				    <td><?=$acao->objetivopedagogico;?></td>	
-    				    <td><?=$acao->tipo;?></td>	
+    				    <td><?=$acao->tema;?></td>	
+    				    <td><?=$acao->tipo=='P'?'Problema':'Desafio';?></td>	
     				    <td><a href="<?=base_url('professor/alterarq/'.$acao->id)?>" class="btn btn-primary btn-small">Alterar</a></td>
     				    <td><a href="<?=base_url('professor/excluirq/'.$acao->id)?>" class="btn btn-danger" onclick="return confirm('Deseja realmente excluir registro?');">excluir</a></td>	
     				    <td><a href="<?=base_url('professor/interacao/'.$acao->id)?>" class="btn btn-primary">Associar</a></td>

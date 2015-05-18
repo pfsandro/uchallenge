@@ -25,7 +25,7 @@ class Desafio_model extends CI_Model {
         $this->db->where('tipo', 'D');
         $this->db->or_where('tipo', 'P');
         $query = $this->db->get();
-       // var_dump($query->result());
+    //    var_dump($query->result());
         return $query->result();
 
      

@@ -7,9 +7,8 @@
 	<!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 </head>
-<body>
-         <img src="<?php echo base_url() . 'topo1.png' ?>" class="img-responsive">
-
+<body background="<?php echo base_url() . 'moldura.gif' ?>" style="background-repeat: no-repeat">
+         
 
              
           <?php    
@@ -56,8 +55,8 @@
               QRcode::png('PHP QR Code :)', $filename, $errorCorrectionLevel, $matrixPointSize, 2);    
         
               }    
-        
-             echo '<center><img src="'.base_url().$PNG_WEB_DIR.basename($filename).'" /></center><hr/>'; 
+            
+             echo ' <br> <br> <br> <br> <br> <br> <br> <br> <br><center><img src="'.base_url().$PNG_WEB_DIR.basename($filename).'" /></center>'; 
 
 
             

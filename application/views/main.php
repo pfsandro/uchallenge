@@ -17,7 +17,7 @@
     		</div>
     	</div>	
 
-	<div class="col-md-2"><a class="btn btn-primary btn-xl page-scroll"<a href="<?= base_url('/main/login') ?>">Login</a></div>
+	<div class="col-md-12"><a class="btn btn-primary btn-xl page-scroll btn-block"<a href="<?= base_url('/main/login') ?>">Login</a></div>
 	
 
 	<!-- Latest compiled and minified JS -->

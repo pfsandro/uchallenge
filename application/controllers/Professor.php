@@ -100,6 +100,7 @@ class Professor extends CI_Controller {
 	public function gerarqr($id=null){
 		$this->db->where('id',$id);
 		$data['acoes']=$this->db->get('acoes')->result();
+		var_dump($data['acoes']);
 		$this->load->view('professor_qrcode',$data);
 		
 	}
@@ -128,12 +129,42 @@ class Professor extends CI_Controller {
     		}	
 		}
 	}
-	public function alterarq($id=null){
-		$this->db->where('id',$id);
-		$data['acoes']=$this->db->get('acoes')->result();
+	public function alterarq($id){
+	   $this->db->select('acoes.nome, acoes.id, acoes.tipo, acoes.objetivopedagogico, tema.id as tema_id, tema.nome as tema, acoes.id as acoes_id, respostas.id as resposta_id, respostas.verdadeira, respostas.resposta');
+        $this->db->from('acoes');
+        $this->db->join('tema', 'acoes.tema_id = tema.id');
+        $this->db->join('respostas','respostas.acoes_id = acoes.id');
+        $this->db->where('respostas.verdadeira', 1 );
+        $this->db->where('acoes.id', $id);
+        $data['acoes']=$this->db->get()->result();
+        //var_dump($data['acoes']);
 		$this->load->view('professor_quizalt',$data);
-		
+
 	}
+
+	public function atualizarquiz(){
+
+			$data ['id']=$this->input->post('id_quiz');
+			$data ['nome']=$this->input->post('nome');
+			$data ['objetivopedagogico']=$this->input->post('objpedagogico');
+		
+ 		/* Carrega o modelo */
+			$this->load->model('quiz_model');
+
+			/* Chama a função inserir do modelo */
+
+			 if ($this->quiz_model->atualizar($data)) {
+			 	$dados ['id']=$this->input->post('resposta_id');
+			 	$dados ['resposta']=$this->input->post('resposta');
+			    $this->load->model('quiz_model');
+			    if ($this->quiz_model->atualizarresposta($dados)){
+			 			redirect('professor');
+				} else {
+					log_message('error', 'Erro ao inserir dessafio.');
+					}
+			}	
+		}
+	//---------------------------------------------//--------------------------------------------
 
 	public function inserirarea() {
  

@@ -38,8 +38,11 @@
     </div>
     <!-- /container -->
 </div>
-
+<div class="row">
+        <div class="col-md-12">
             <img src="<?php echo base_url() . 'topo1.png' ?>" class="img-responsive">
+        </div>
+ </div>           
 
 <div class="container-fluid">
     <div class="row">
@@ -129,7 +132,8 @@
 							</select>
 						</div>
 					</div>
-				</div>		
+				</div>
+					<center><h4>Selecione no mapa o cenário do jogo</h4></center>	
 					<input id="lat" type="hidden" name="lat">
 					<input id="lng" type="hidden" name="lng">
 					<input id="zoom" type="hidden" name="zoom">
