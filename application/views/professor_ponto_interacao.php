@@ -101,7 +101,7 @@
 						</div>
 					</div>
 
-					<div style="height: 200px; width: 100%" id="map"></div>
+					<div style="height: 300px; width: 100%" id="map"></div>
 					<div class="modal-footer">
 
 					<button type="submit" class="btn btn-primary">Subscribe</button>

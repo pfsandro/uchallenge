@@ -100,7 +100,7 @@ class Professor extends CI_Controller {
 	public function gerarqr($id=null){
 		$this->db->where('id',$id);
 		$data['acoes']=$this->db->get('acoes')->result();
-		var_dump($data['acoes']);
+		//var_dump($data['acoes']);
 		$this->load->view('professor_qrcode',$data);
 		
 	}
@@ -141,7 +141,7 @@ class Professor extends CI_Controller {
 		$this->load->view('professor_quizalt',$data);
 
 	}
-
+	//--------------------Atualiza ações (quiz, perguntas e desafios)
 	public function atualizarquiz(){
 
 			$data ['id']=$this->input->post('id_quiz');

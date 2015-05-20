@@ -56,14 +56,20 @@
         
               }    
             
-             echo ' <br> <br> <br> <br> <br> <br> <br> <br> <br><center><img src="'.base_url().$PNG_WEB_DIR.basename($filename).'" /></center>'; 
+              echo '<center> <TABLE BACKGROUND=" '.base_url().'moldurafn.GIF" BORDER=5  width=900 height=650>
+                  <TR>
+                    <TD><center> <img src="'.base_url().$PNG_WEB_DIR.basename($filename).'" /></center></TD>
+                  </TR>
+              </TABLE></center>
+              ';
+             
+             echo ' <center><form>
+                <input type="button" value="Imprimir" onClick="window.print()">
+             </form></center'; 
 
 
             
     ?>
-       
-
-
 
 	<!-- Latest compiled and minified JS -->
 	<script src="//code.jquery.com/jquery.js"></script>
