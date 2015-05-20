@@ -89,14 +89,14 @@
             <option value="Q"'.(($errorCorrectionLevel=='Q')?' selected':'').'>Q</option>
             <option value="H"'.(($errorCorrectionLevel=='H')?' selected':'').'>H - best</option>
             </select>&nbsp;
-             Size:&nbsp;<select name="size">
+             Tamanho:&nbsp;<select name="size">
         
             <?php
-            for($i=10;$i<=20;$i++)
+            for($i=1;$i<=10;$i++)
               echo '<option value="'.$i.'"'.(($matrixPointSize==$i)?' selected':'').'>'.$i.'</option>';?>
         
             </select>
-            <input type="submit" value="GENERATE">
+            <input type="submit" value="Gerar">
           </form><hr/>
         
       

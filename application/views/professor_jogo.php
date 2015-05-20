@@ -84,13 +84,11 @@
         </div>
         <!-- /col-3 -->
         <div class="col-sm-9">
-            <h4>Game</h4>
+            <h4>New Game</h4>
             <hr>
 
 		<form action="<?= base_url('professor/inserirjogo/') ?>" method="POST" role="form">
-				<div class="modal-header">
-					<h4 class="modal-title">New game</h4>
-				</div>
+				
 				<div class="modal-body">
 						
 					<div class="form-group">
@@ -137,7 +135,7 @@
 					<input id="lat" type="hidden" name="lat">
 					<input id="lng" type="hidden" name="lng">
 					<input id="zoom" type="hidden" name="zoom">
-					<div style="height: 200px; width: 100%" id="map"></div>
+					<div style="height: 300px; width: 100%" id="map"></div>
 					<div class="modal-footer">
 
 					<button type="submit" class="btn btn-primary">Subscribe</button>
