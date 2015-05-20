@@ -81,22 +81,23 @@
         </div>
         <!-- /col-3 -->
         <div class="col-sm-9">
-            <h4>Gerenciar Quiz</h4>
-           	<form action="<?= base_url('professor/inserirquiz/') ?>" method="POST" role="form">
+            <h4>Alterar</h4>
+           	<form action="<?= base_url('professor/atualizarquiz/') ?>" method="POST" role="form">
 				
 				<div class="modal-body">
 						
 					<div class="form-group">
+						<input id="id" type="hidden" name="id_quiz" value="<?= $acoes[0]->id;?>" >
 						<label for="nome">Pergunta</label>
 						<input type="text" name="nome" class="form-control" id="nome" value="<?= $acoes[0]->nome;?>">
 					</div>
 				
 				<div class="row">
-					<div class="col-md-6">
+					<div class="col-md-5">
 						<div class="form-group">
 							<label for="objpedagogico">Objetivo Pedagógico</label>		
 							<select name="objpedagogico"  class"form-control" id="objpedagogico">
-								<option value="0"> selecionar</option>
+								<option value="<?= $acoes[0]->objetivopedagogico;?>"><?= $acoes[0]->objetivopedagogico;?></option>
 								<option value="lembrar"> Lembrar</option>
 								<option value="entender"> Entender</option>
 								<option value="aplicar"> Aplicar</option>
@@ -105,60 +106,22 @@
 							</select>
 						</div>
 					</div>
-					<div class="col-md-6">
-						<div class="form-group">
-							<label for="areac">Area conhecimento</label>		
-							<select name="idareac"  class"form-control" id="areac">
-								<option value="0"> Selecionar</option>
-								<?php foreach ($areasc as $areac){?>
-								<option value="<?=$areac->id;?>"><?=$areac->nome; ?></option>
-								<?php } ?>
-							
-							</select>
-						</div>
-					</div>	
-				</div>	
-				<div class="row">
-					<div class="col-md-6">
-						<div class="form-group">
-							<label for="areaa">Area avaliação</label>		
-							<select name="idareaa"  class"form-control" id="areaa">
-								<option value="0"> Selecionar</option>
-								<?php foreach ($areasa as $areaa){?>
-								<option value="<?=$areaa->id;?>"><?=$areaa->nome; ?></option>
-								<?php } ?>
-							</select>
-						</div>
-					</div>	
-					<div class="col-md-6">
+					
+					<div class="col-md-7">
 						<div class="form-group">
 							<label for="tema">Tema</label>		
-							<select name="idtema"  class"form-control" id="tema">
-								<option value="0"> Selecionar</option>
-								<?php foreach ($temas as $tema){?>
-								<option value="<?=$tema->id;?>"><?=$tema->nome; ?></option>
-								<?php } ?>
-							</select>
+							<input type="text" name="tema" class="form-control" id="nome" value="<?= $acoes[0]->tema;?>" disabled>
 						</div>
 					</div>
-				</div>		
+				</div>
+					<input id="" type="hidden" name="resposta_id" value="<?= $acoes[0]->resposta_id;?>" >	
 					<div class="form-group">
 
 						<label for="resposta">Resposta verdadeira</label>
-						<input type="text" name="resposta" class="form-control" id="resposta" placeholder="Digite a resposta verdadeira">
-					</div>
-					<div class="form-group">
-
-						<label for="respostaf1">Resposta Falsa</label>
-						<input type="text" name="respostaf1" class="form-control" id="respostaf1" placeholder="Digite resposta falsa">
-					</div>
-					<div class="form-group">
-
-						<label for="respostaf2">Resposta falsa</label>
-						<input type="text" name="respostaf2" class="form-control" id="respostaf2" placeholder="Digite resposta falsa">
+						<input type="text" name="resposta" class="form-control" id="nome" value="<?= $acoes[0]->resposta;?>">
 					</div>
 					</div>
-					<div class="modal-footer">
+				<div class="modal-footer">
 
 					<button type="submit" class="btn btn-primary">Alterar</button>
 				</div>

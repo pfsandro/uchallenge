@@ -90,7 +90,7 @@
   				<tr>
   					<th> ID Quiz </th>
   					<th> Questão</th>
-  					<th> Objetivo Pedagógico </th>
+  					<th> Tema </th>
   					<th> Alterar </th>
   					<th> Excluir</th>
   				</tr>
@@ -101,7 +101,7 @@
       			<tr>
       				<td><?=$acao->id;?></td>
       				<td><?=$acao->nome;?></td>	
-      				<td><?=$acao->objetivopedagogico;?></td>	
+      				<td><?=$acao->tema;?></td>	
       				<td><a href="<?=base_url('professor/alterarq/'.$acao->id)?>" class="btn btn-primary">Alterar</a></td>
       				<td><a href="<?=base_url('professor/excluirq/'.$acao->id)?>" class="btn btn-danger" onclick="return confirm('Deseja realmente excluir registro?');">excluir</a></td>	
       				
@@ -125,9 +125,24 @@
 	<script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
   <script src="<?= base_url('assets/js/jquery.dataTables.min.js') ?>"></script>
 
-  <script type="text/javascript">
+ <script type="text/javascript">
     $(document).ready(function() {
-      $('#lista').dataTable();
+      $('#lista').dataTable( {
+        "language": {
+            "lengthMenu": "Mostrar _MENU_ Registros por página",
+            "search" : "Pesquisar",
+            "zeroRecords": " Nada Encontrado",
+            "info": "Mostrando página _PAGE_ de _PAGES_",
+            "infoEmpty": "Nenhum registro Encontrado",
+            "infoFiltered": "(registos Filtrados de _MAX_ total records)",
+            "paginate" : {
+            "next" : "Próximo" ,
+            "previous" : "Anterior" ,
+            "first" : "Primeiro" ,
+            "last" : "Último" },
+        }
+    } );
+
     } );
   </script>
 

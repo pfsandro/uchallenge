@@ -32,10 +32,15 @@
     </div>
     <!-- /container -->
 </div>
-
-            <img src="<?php echo base_url() . 'topo1.png' ?>" class="img-responsive">
-
 <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <center><img src="<?php echo base_url().'topo1.png' ?>" class="img-responsive"></center>
+      </div>
+    </div>  
+           
+
+
     <div class="row">
         <div class="col-sm-3">
             <h4>Painel de Controle</h4>
@@ -58,7 +63,7 @@
    					 			            <li><a href="<?= base_url('/professor/desafiol') ?>">Listar</a></li>	
   							           </ul>
                          </li>  
-                       <li class"dropdown">
+                        <li class"dropdown">
                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                               Quiz
                               <span class="caret"></span></a>
@@ -66,23 +71,23 @@
                               <li><a href="<?= base_url('/professor/quiz') ?>">cadastro</a></li>
                               <li><a href="<?= base_url('/professor/quizl') ?>">Listar</a></li>  
                            </ul>
-                      </li>   
-             </ul            
-				</div>
-                      
-                       
-             <hr>
+                        </li>   
+             </ul>            
+			                   
+              <hr>
         </div>
         <!-- /col-3 -->
         <div class="col-sm-9">
             <h4>Home</h4>
             <hr>
-            O UCHALLENGE é um modelo para construção de jogos sérios e ubíquos, com foco em uma metodologia de aprendizagem baseada em problemas. 
+           
+            <p align ="justify">O UCHALLENGE é um modelo para construção de jogos sérios e ubíquos, com foco em uma metodologia de aprendizagem baseada em problemas. 
             O modelo permite ao professor a criação de jogos baseados em problemas e a adaptação de tais jogos a 
-            cenários do mundo real, utilizando esse contexto para possibilitar a interação com situações reais desse ambiente.
+            cenários do mundo real, utilizando esse contexto para possibilitar a interação com situações reais desse ambiente.</p>
+        
         </div>
-     </div>
- </div>
+   </div>
+  </div> 
 
 
 	<!-- Latest compiled and minified JS -->
