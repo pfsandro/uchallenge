@@ -46,6 +46,20 @@ class Api extends CI_Controller {
 		$this->webapi->run();
     }
 
+    public function jogos()
+    {
+        $ci = $this;
+        $this->load->library('webapi');
+
+        $this->webapi->method('get', function() use ($ci) {
+            $ci->load->database();
+            $query = $ci->db->get('jogos');
+            return $query->result_array();
+        });
+
+        $this->webapi->run();
+    }
+
 }
 
 /* End of file Api.php */
