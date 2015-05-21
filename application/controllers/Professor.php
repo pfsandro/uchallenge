@@ -83,7 +83,7 @@ class Professor extends CI_Controller {
 		$this->load->library('form_validation');
 
 		// Colocar em uma model!
-		$this->db->select('jogos.id, jogos.nome as jogo, jogos.tema_id, coordmapa.longitude, coordmapa.latitude, coordmapa.zoom');
+		$this->db->select('jogos.id, jogos.nome as jogo, jogos.tema_id, acoes.id as acoes_id, coordmapa.longitude, coordmapa.latitude, coordmapa.zoom');
 		$this->db->join('coordmapa', 'jogos.coordmapa_id = coordmapa.id');
 		$this->db->join('acoes', 'jogos.tema_id = acoes.tema_id');
 		$this->db->where('acoes.id', $id);

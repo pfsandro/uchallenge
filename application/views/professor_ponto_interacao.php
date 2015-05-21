@@ -13,7 +13,7 @@
 	<!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 </head>
-<body>
+<body ng-app="mapa">
 	<div id="top-nav" class="navbar navbar-inverse navbar-static-top">
     <div class="container-fluid">
         <div class="navbar-header">
@@ -84,15 +84,15 @@
             <h4>Definir Interação com o Ambiente</h4>
             <hr>
 
-		<form action="<?= base_url('professor/inseririnteracao/') ?>" method="POST" role="form">
+		<form action="<?= base_url('professor/inseririnteracao/') ?>" method="POST" role="form" ng-controller="mapaCtrl">
 				<div class="modal-header">
 					<h4 class="modal-title">Cadastrar interação</h4>
 				</div>
 				<div class="modal-body">
 						
 										
-					<div class="col-md-3" ng-app="mapa">	
-						<div class="form-group" ng-controller="mapaCtrl">
+					<div class="col-md-3">	
+						<div class="form-group">
 							<label for="Jogo">Jogo</label>
 							<select name="idtema" ng-model="jogo" ng-change="setCenter(jogo)" class"form-control" id="tema">
 								<option value="0">----</option>
@@ -104,15 +104,18 @@
 					<div style="height: 300px; width: 100%" id="map"></div>
 					<div class="modal-footer">
 
-					<button type="submit" class="btn btn-primary">Subscribe</button>
+          <input type="text" name="lat" id="lat">
+          <input type="text" name="lng" id="lng">
+          <input type="text" name="zoom" ng-model="zoom">
+          <input type="text" name="acoes_id" ng-model="acoes_id">
+          <input type="text" name="jogo_id" ng-model="jogo_id">
+					<button type="submit" class="btn btn-primary">Salvar</button>
 				</div>
 			</form>
 	     </div>
      </div>
  </div>
 	
-
- 	
     
 	<!-- Latest compiled and minified JS -->
 	<script src="//code.jquery.com/jquery.js"></script>
@@ -131,6 +134,7 @@
           longitude: '<?php echo $jogo->longitude; ?>',
           latitude: '<?php echo $jogo->latitude; ?>',
           zoom: '<?php echo $jogo->zoom; ?>',
+          acoes_id: '<?php echo $jogo->acoes_id; ?>'
         });
       <?php } ?>
         $scope.jogos = jogos;
@@ -139,6 +143,9 @@
             return j.id == id;
           });
           map.setCenter(jogo[0].latitude, jogo[0].longitude);
+          $scope.zoom = jogo[0].zoom;
+          $scope.acoes_id = jogo[0].acoes_id;
+          $scope.jogo_id = jogo[0].id;
         };
       });
 
@@ -149,6 +156,17 @@
 	      el: '#map',
 	      lat: -12.043333,
 	      lng: -77.028333,
+        click: function(e) {
+          map.removeMarkers();
+          map.addMarker({
+            lat: e.latLng.lat(),
+            lng: e.latLng.lng(),
+            //title: 'ponto'
+            //infoWindow: {}
+          });
+          document.getElementById('lat').value = e.latLng.lat();
+          document.getElementById('lng').value = e.latLng.lng();
+        }
 	    });
 
 	    /* Geolocalização do Google Maps */
