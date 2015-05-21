@@ -84,7 +84,7 @@
             <h4>Objetos de Aprendizagem</h4>
             <hr>
 
-		<form action="<?= base_url('professor/inserirobjeto/') ?>" method="POST" role="form">
+		<form action="<?= base_url('professor/inserirobjeto/') ?>" method="POST" role="form" enctype="multipart/form-data">
 				<div class="modal-header">
 					<h4 class="modal-title">Novo Objeto</h4>
 				</div>
@@ -131,11 +131,8 @@
 						
 					</div>
 				</div>
-					<input type="file" name="userfile" size="20" />
+					<input type="file" name="userfile" />
 
-						<br/>
-
-					<input type="submit" value="upload" />	
 					<div class="modal-footer">
 
 					<button type="submit" class="btn btn-primary">Cadastrar</button>

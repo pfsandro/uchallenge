@@ -166,6 +166,20 @@ class Professor extends CI_Controller {
 		}
 	//---------------------------------------------//--------------------------------------------
 
+	public function inserirobjeto() {
+		$this->load->library('upload', array(
+			'upload_path' => './',
+			'allowed_types' => '*'
+		));
+
+		if (!$this->upload->do_upload()) {
+			var_dump($this->upload->display_errors());
+		} else {
+			$resultado = $this->upload->data();
+			var_dump($resultado['file_name']);
+		}
+	}
+	//---------------------------------------------//--------------------------------------------
 	public function inserirarea() {
  
 	/* Carrega a biblioteca do CodeIgniter responsável pela validação dos formulários */
