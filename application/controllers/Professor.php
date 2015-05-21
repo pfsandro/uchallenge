@@ -79,24 +79,6 @@ class Professor extends CI_Controller {
 		$this->load->view('professor_quiz',$dados);
 		
 	}
-	public function interacao($id){
-		$this->load->library('form_validation');
-
-		// Colocar em uma model!
-		$this->db->select('jogos.id, jogos.nome as jogo, jogos.tema_id, acoes.id as acoes_id, coordmapa.longitude, coordmapa.latitude, coordmapa.zoom');
-		$this->db->join('coordmapa', 'jogos.coordmapa_id = coordmapa.id');
-		$this->db->join('acoes', 'jogos.tema_id = acoes.tema_id');
-		$this->db->where('acoes.id', $id);
-		$query = $this->db->get('jogos');
-		//var_dump($query->result());
-
-		$dados = array(
-			'jogos' => $query->result(),
-		);	
-
-		$this->load->view('professor_ponto_interacao',$dados);
-		
-	}
 	public function gerarqr($id=null){
 		$this->db->where('id',$id);
 		$data['acoes']=$this->db->get('acoes')->result();
@@ -110,6 +92,49 @@ class Professor extends CI_Controller {
 		$this->load->view('professor_qrcode1');
 		
 	}
+	//-------------------------------------------//----------------------------
+
+	public function interacao($id){ //carrega informações referente a ação selecionada e os jogos com o mesmo tema da ação........
+		$this->load->library('form_validation');
+
+		// Colocar em uma model!
+		$this->db->select('jogos.id, jogos.nome as jogo, jogos.tema_id, acoes.id as acoes_id, coordmapa.longitude, coordmapa.latitude, coordmapa.zoom');
+		$this->db->join('coordmapa', 'jogos.coordmapa_id = coordmapa.id');
+		$this->db->join('acoes', 'jogos.tema_id = acoes.tema_id');
+		$this->db->where('acoes.id', $id);
+		$query = $this->db->get('jogos');
+		//var_dump($query->result());
+		$dados = array(
+			'jogos' => $query->result(),
+		);	
+		$this->load->view('professor_ponto_interacao',$dados);
+	}
+
+//-------------------------------Insere a ação selecionada no mapa do jogo --------------------------------------------
+	public function inseririnteracao() {
+ 
+		$dados['longitude']=$this->input->post('lng');
+		$dados['latitude']=$this->input->post('lat');
+		$dados['zoom']=$this->input->post('zoom');
+					
+ 		/* Carrega o modelo */
+		$this->load->model('coordenadas_model');
+ 		/* Chama a função inserir do modelo */
+		if ($this->coordenadas_model->inserircoordenadas($dados)) {
+			$data ['id']=$this->input->post('acoes_id');
+			$data ['coordmapa_id']=$this->db->insert_id();
+			if ($this->coordenadas_model->inserircoordenadasacoes($data)) {
+				$data1 ['acoes_id']=$this->input->post('acoes_id');
+				$data1 ['jogos_id']=$this->input->post('jogo_id');
+				if ($this->coordenadas_model->inserirjogos_acoes($data1)) {
+			 		redirect('professor/desafiol');
+			    } else {
+			log_message('error', 'Erro ao inserir coordenadas açoes.');
+				}
+			}	
+		}
+	}
+	
 
 	public function quizl(){
 		$this->load->model('quiz_model');
@@ -141,27 +166,27 @@ class Professor extends CI_Controller {
 		$this->load->view('professor_quizalt',$data);
 
 	}
-	//--------------------Atualiza ações (quiz, perguntas e desafios)
+	//--------------------Atualiza ações (quiz, perguntas e desafios)-----------------
 	public function atualizarquiz(){
 
-			$data ['id']=$this->input->post('id_quiz');
-			$data ['nome']=$this->input->post('nome');
-			$data ['objetivopedagogico']=$this->input->post('objpedagogico');
+		$data ['id']=$this->input->post('id_quiz');
+		$data ['nome']=$this->input->post('nome');
+		$data ['objetivopedagogico']=$this->input->post('objpedagogico');
 		
  		/* Carrega o modelo */
-			$this->load->model('quiz_model');
+		$this->load->model('quiz_model');
 
 			/* Chama a função inserir do modelo */
 
-			 if ($this->quiz_model->atualizar($data)) {
-			 	$dados ['id']=$this->input->post('resposta_id');
-			 	$dados ['resposta']=$this->input->post('resposta');
-			    $this->load->model('quiz_model');
-			    if ($this->quiz_model->atualizarresposta($dados)){
-			 			redirect('professor');
-				} else {
-					log_message('error', 'Erro ao inserir dessafio.');
-					}
+		 if ($this->quiz_model->atualizar($data)) {
+		 	$dados ['id']=$this->input->post('resposta_id');
+		 	$dados ['resposta']=$this->input->post('resposta');
+		    $this->load->model('quiz_model');
+		    if ($this->quiz_model->atualizarresposta($dados)){
+				redirect('professor');
+			} else {
+				log_message('error', 'Erro ao inserir dessafio.');
+				}
 			}	
 		}
 	//---------------------------------------------//--------------------------------------------
@@ -192,9 +217,7 @@ class Professor extends CI_Controller {
 	/* Define as regras para validação */
 		$this->form_validation->set_rules('nome', 'Nome', 'required|max_length[40]');
 
-	
- 
-	/* Executa a validação e caso houver erro... */
+		/* Executa a validação e caso houver erro... */
 		if ($this->form_validation->run() === FALSE) {
 		/* Chama a função index do controlador */
 			$this->index();
@@ -203,8 +226,7 @@ class Professor extends CI_Controller {
 		/* Recebe os dados do formulário (visão) */
 			$data['nome'] = $this->input->post('nome');
 			
-		
- 		/* Carrega o modelo */
+			/* Carrega o modelo */
 			$this->load->model('area_model');
  
 		/* Chama a função inserir do modelo */
@@ -215,32 +237,21 @@ class Professor extends CI_Controller {
 			}
 		}
 	}
+	//-------------------------------------//------------------------------------------------
 	public function inserirtema() {
  
-	/* Carrega a biblioteca do CodeIgniter responsável pela validação dos formulários */
-
 		$this->load->library('form_validation');
- 
-	/* Define as tags onde a mensagem de erro será exibida na página */
-		$this->form_validation->set_error_delimiters('<span>', '</span>');
- 
-	/* Define as regras para validação */
+ 		$this->form_validation->set_error_delimiters('<span>', '</span>');
 		$this->form_validation->set_rules('nome', 'Nome', 'required|max_length[40]');
-	
- 
-	/* Executa a validação e caso houver erro... */
 		if ($this->form_validation->run() === FALSE) {
-		/* Chama a função index do controlador */
 			$this->index();
-	/* Senão, caso sucesso na validação... */	
 		} else {
 		/* Recebe os dados do formulário (visão) */
 			$data['nome'] = $this->input->post('nome');
 		
  		/* Carrega o modelo */
 			$this->load->model('tema_model');
- 
-		/* Chama a função inserir do modelo */
+ 		/* Chama a função inserir do modelo */
 			if ($this->tema_model->inserir($data)) {
 				redirect('professor');
 			} else {
@@ -248,32 +259,20 @@ class Professor extends CI_Controller {
 			}
 		}
 	}
+	//-------------------------------------//------------------------------------------------
 	public function inserirareaavalia() {
  
-	/* Carrega a biblioteca do CodeIgniter responsável pela validação dos formulários */
-
 		$this->load->library('form_validation');
- 
-	/* Define as tags onde a mensagem de erro será exibida na página */
-		$this->form_validation->set_error_delimiters('<span>', '</span>');
- 
-	/* Define as regras para validação */
-		$this->form_validation->set_rules('nome', 'Nome', 'required|max_length[40]');
-	
- 
-	/* Executa a validação e caso houver erro... */
+ 		$this->form_validation->set_error_delimiters('<span>', '</span>');
+ 		$this->form_validation->set_rules('nome', 'Nome', 'required|max_length[40]');
 		if ($this->form_validation->run() === FALSE) {
-		/* Chama a função index do controlador */
 			$this->index();
-	/* Senão, caso sucesso na validação... */	
 		} else {
 		/* Recebe os dados do formulário (visão) */
 			$data['nome'] = $this->input->post('nome');
-		
- 		/* Carrega o modelo */
+		/* Carrega o modelo */
 			$this->load->model('areaavalia_model');
- 
-		/* Chama a função inserir do modelo */
+ 		/* Chama a função inserir do modelo */
 			if ($this->areaavalia_model->inserir($data)) {
 				redirect('professor');
 			} else {
@@ -282,7 +281,7 @@ class Professor extends CI_Controller {
 		}
 	}
 
-
+	//-------------------------------------//------------------------------------------------
 	public function inserirjogo() {
  
 	/* Carrega a biblioteca do CodeIgniter responsável pela validação dos formulários */
@@ -309,111 +308,54 @@ class Professor extends CI_Controller {
 		/* Recebe os dados do formulário (visão) */
 
 
-			$dados['longitude']=$this->input->post('lng');
-			$dados['latitude']=$this->input->post('lat');
-			$dados['zoom']=$this->input->post('zoom');
-		
-				
-			
-				
+		$dados['longitude']=$this->input->post('lng');
+		$dados['latitude']=$this->input->post('lat');
+		$dados['zoom']=$this->input->post('zoom');
+					
  		/* Carrega o modelo */
-			$this->load->model('jogo_model');
- 
-		/* Chama a função inserir do modelo */
-
-			if ($this->jogo_model->inserircoordenadas($dados)) {
-				$data ['nome']=$this->input->post('nome');
-				$data ['tema_id']=$this->input->post('idtema');
-				$data ['areaavaliacao_id']=$this->input->post('idareaa');
-				$data ['areaconhecimento_id']=$this->input->post('idareac');
-				$data ['coordmapa_id']=$this->db->insert_id();
-				 if ($this->jogo_model->inserir($data)) {
-				 	redirect('professor');
-				} else {
-				log_message('error', 'Erro ao inserir jogo.');
-				}
+		$this->load->model('jogo_model');
+ 		/* Chama a função inserir do modelo */
+		if ($this->jogo_model->inserircoordenadas($dados)) {
+			$data ['nome']=$this->input->post('nome');
+			$data ['tema_id']=$this->input->post('idtema');
+			$data ['areaavaliacao_id']=$this->input->post('idareaa');
+			$data ['areaconhecimento_id']=$this->input->post('idareac');
+			$data ['coordmapa_id']=$this->db->insert_id();
+			 if ($this->jogo_model->inserir($data)) {
+			 	redirect('professor');
+			} else {
+			log_message('error', 'Erro ao inserir jogo.');
 			}
 		}
-	#}
+	}
+	//-------------------------------------//------------------------------------------------
 	public function inserirdesafio() {
  
-	/* Carrega a biblioteca do CodeIgniter responsável pela validação dos formulários */
-
-		#$this->load->library('form_validation');
- 
-	/* Define as tags onde a mensagem de erro será exibida na página */
-		#$this->form_validation->set_error_delimiters('<span>', '</span>');
- 
-	/* Define as regras para validação */
-		#$this->form_validation->set_rules('nome', 'Nome', 'required|max_length[40]');
-		#$this->form_validation->set_rules('idtema', 'Tema', 'required|max_length[40]');
-		#$this->form_validation->set_rules('idareac', 'areaconhecimento_id', 'required|max_length[40]');
-		#$this->form_validation->set_rules('idareaa', 'Tema', 'required|max_length[40]');
-		#$this->form_validation->set_rules('coordmapa', 'Tema', 'required|max_length[40]');
-		
- 
-	/* Executa a validação e caso houver erro... */
-		#if ($this->form_validation->run() === FALSE) {
-		/* Chama a função index do controlador */
-		#	$this->index();
-	/* Senão, caso sucesso na validação... */	
-		#} else {
-		/* Recebe os dados do formulário (visão) */
-
-		
-			$data ['nome']=$this->input->post('nome');
-			$data ['tipo']=$this->input->post('tipo');
-			$data ['objetivopedagogico']=$this->input->post('objpedagogico');
-			$data ['areaavaliacao_id']=$this->input->post('idareaa');
-			$data ['tema_id']=$this->input->post('idtema');
-			$data ['areaconhecimento_id']=$this->input->post('idareac');
-			
-			
-			
-				
+		$data ['nome']=$this->input->post('nome');
+		$data ['tipo']=$this->input->post('tipo');
+		$data ['objetivopedagogico']=$this->input->post('objpedagogico');
+		$data ['areaavaliacao_id']=$this->input->post('idareaa');
+		$data ['tema_id']=$this->input->post('idtema');
+		$data ['areaconhecimento_id']=$this->input->post('idareac');
+							
  		/* Carrega o modelo */
-			$this->load->model('desafio_model');
+		$this->load->model('desafio_model');
 
-			/* Chama a função inserir do modelo */
+		/* Chama a função inserir do modelo */
 
-			 if ($this->desafio_model->inserir($data)) {
-			 	$dados ['resposta']=$this->input->post('resposta');
-			 	$dados ['verdadeira']="1";
-			 	$dados ['acoes_id']=$this->db->insert_id();
-			 	if ($this->desafio_model->inserirresposta($dados)){
-
+		 if ($this->desafio_model->inserir($data)) {
+		 	$dados ['resposta']=$this->input->post('resposta');
+		 	$dados ['verdadeira']="1";
+		 	$dados ['acoes_id']=$this->db->insert_id();
+		 	if ($this->desafio_model->inserirresposta($dados)){
 				redirect('professor');
-				} else {
-					log_message('error', 'Erro ao inserir desafio.');
-					}
+			} else {
+				log_message('error', 'Erro ao inserir desafio.');
+				}
 			}	
 		}
-
+	//-------------------------------------//------------------------------------------------
 		public function inserirquiz() {
- 
-	/* Carrega a biblioteca do CodeIgniter responsável pela validação dos formulários */
-
-		#$this->load->library('form_validation');
- 
-	/* Define as tags onde a mensagem de erro será exibida na página */
-		#$this->form_validation->set_error_delimiters('<span>', '</span>');
- 
-	/* Define as regras para validação */
-		#$this->form_validation->set_rules('nome', 'Nome', 'required|max_length[40]');
-		#$this->form_validation->set_rules('idtema', 'Tema', 'required|max_length[40]');
-		#$this->form_validation->set_rules('idareac', 'areaconhecimento_id', 'required|max_length[40]');
-		#$this->form_validation->set_rules('idareaa', 'Tema', 'required|max_length[40]');
-		#$this->form_validation->set_rules('coordmapa', 'Tema', 'required|max_length[40]');
-		
- 
-	/* Executa a validação e caso houver erro... */
-		#if ($this->form_validation->run() === FALSE) {
-		/* Chama a função index do controlador */
-		#	$this->index();
-	/* Senão, caso sucesso na validação... */	
-		#} else {
-		/* Recebe os dados do formulário (visão) */
-
 		
 			$data ['nome']=$this->input->post('nome');
 			$data ['tipo']="Q";
@@ -422,9 +364,6 @@ class Professor extends CI_Controller {
 			$data ['tema_id']=$this->input->post('idtema');
 			$data ['areaconhecimento_id']=$this->input->post('idareac');
 			
-			
-			
-				
  		/* Carrega o modelo */
 			$this->load->model('quiz_model');
 
