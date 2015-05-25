@@ -44,7 +44,6 @@ class Professor extends CI_Controller {
 			'areasa'=> $this->db->get('areaavaliacao')->result(),
 			'temas' => $this->db->get('tema')->result(),
 		);	
-
 		$this->load->view('professor_conteudo',$dados);
 		
 	}
@@ -193,7 +192,7 @@ class Professor extends CI_Controller {
 
 	public function inserirobjeto() {
 		$this->load->library('upload', array(
-			'upload_path' => './',
+			'upload_path' => './upload',
 			'allowed_types' => '*'
 		));
 
@@ -201,7 +200,23 @@ class Professor extends CI_Controller {
 			var_dump($this->upload->display_errors());
 		} else {
 			$resultado = $this->upload->data();
-			var_dump($resultado['file_name']);
+			//var_dump($resultado['file_name']);
+			$dados ['formato']=$this->input->post('formato');
+			$dados ['arquivo']=$resultado['file_name'];
+			$dados ['areaavaliacao_id']=$this->input->post('idareaa');
+			$dados ['tema_id']=$this->input->post('idtema');
+			$dados ['areaconhecimento_id']=$this->input->post('idareac');
+							
+ 		/* Carrega o modelo */
+		$this->load->model('objeto_model');
+
+		/* Chama a função inserir do modelo */
+
+		 if ($this->objeto_model->inserir($dados)) {
+		 		redirect('professor/objaprendizagem');
+			} else {
+				log_message('error', 'Erro ao inserir a area.');
+			}
 		}
 	}
 	//---------------------------------------------//--------------------------------------------

@@ -84,16 +84,22 @@
             <h4>Objetos de Aprendizagem</h4>
             <hr>
 
-		<form action="<?= base_url('professor/inserirobjeto/') ?>" method="POST" role="form">
+		<form action="<?= base_url('professor/inserirobjeto/') ?>" method="POST" role="form" enctype="multipart/form-data">
 				<div class="modal-header">
 					<h4 class="modal-title">Novo Objeto</h4>
 				</div>
 				<div class="modal-body">
 						
 					<div class="form-group">
-
-						<label for="nome">Nome</label>
-						<input type="text" name="nome" class="form-control" id="nome" placeholder="Digite Nome do Objeto">
+							<label for="formato de Arquivo">Tipo de Arquivo</label>		
+							<select name="formato"  class"form-control" id="formato">
+								<option value="0"> selecionar</option>
+								<option value="pdf"> PDF</option>
+								<option value="mp3"> MP3</option>
+								<option value="avi"> AVI</option>
+								<option value="jpg"> JPG</option>
+								<option value="mpeg"> MPEG</option>
+							</select>
 					</div>
 				<div class="row">
 					<div class="col-md-5">	
@@ -131,13 +137,9 @@
 						
 					</div>
 				</div>
-					<?=$error;?>
-					<?=form_open_multipart('upload/do_upload'); ?>
-					<input type="file" name="userfile" size="20" />
-					<br/>
-					<input type="submit" value="upload" />	
-					
-				<div class="modal-footer">
+					<input type="file" name="userfile" />
+
+					<div class="modal-footer">
 
 					<button type="submit" class="btn btn-primary">Cadastrar</button>
 				</div>
