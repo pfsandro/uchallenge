@@ -50,8 +50,8 @@
                   
                         <li class="active"><a href="<?= base_url('professor') ?>">Home</a></li>
 
-                        <li><a href="<?= base_url('professor/area') ?>"></i> Areas Conhecimento </a></li>
-                        <li><a href="<?= base_url('/professor/areaavalia') ?>"></i> Areas de Avaliação </a></li>
+                       <!-- <li><a href="<?= base_url('professor/area') ?>"></i> Areas Conhecimento </a></li>-->
+                        <!--<li><a href="<?= base_url('/professor/areaavalia') ?>"></i> Areas de Avaliação </a></li>-->
                         <li><a href="<?= base_url('/professor/tema') ?>"></i> Temas </a></li>
                         <li><a href="<?= base_url('/professor/jogo') ?>"></i> Jogos </a></li>
                          <li><a href="<?= base_url('/professor/objaprendizagem') ?>"></i> Conteúdos </a></li>
@@ -81,13 +81,11 @@
         </div>
         <!-- /col-3 -->
         <div class="col-sm-9">
-            <h4>Objetos de Aprendizagem</h4>
+            <h4>Cadastrar materia de apoio</h4>
             <hr>
 
 		<form action="<?= base_url('professor/inserirobjeto/') ?>" method="POST" role="form" enctype="multipart/form-data">
-				<div class="modal-header">
-					<h4 class="modal-title">Novo Objeto</h4>
-				</div>
+				
 				<div class="modal-body">
 						
 					<div class="form-group">
@@ -108,7 +106,7 @@
 							<select name="idareac"  class"form-control" id="areac">
 								<option value="0"> ----</option>
 								<?php foreach ($areasc as $areac){?>
-								<option value="<?=$areac->id;?>"><?=$areac->nome; ?></option>
+								<option value="<?=$areac->id;?>" ><?=$areac->nome; ?></option>
 								<?php } ?>
 							</select>
 						</div>

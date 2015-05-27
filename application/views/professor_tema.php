@@ -43,11 +43,11 @@
             <hr>
             <ul class="nav nav-stacked">
                   
-                        <li class="active"><a href="<?= base_url('/professor/tema') ?>"></i> Temas </a></li>
+                        <li class="active"><a href="<?= base_url('professor') ?>">Home </a></li>
 
-                        <li><a href="<?= base_url('professor/area') ?>"></i> Areas Conhecimento </a></li>
-                        <li><a href="<?= base_url('/professor/areaavalia') ?>"></i> Areas de Avaliação </a></li>
-                        <li><a href="<?= base_url('professor') ?>">Home</a></li>
+                     <!-- <li><a href="<?= base_url('professor/area') ?>"></i> Areas Conhecimento </a></li>-->
+                        <!--<li><a href="<?= base_url('/professor/areaavalia') ?>"></i> Areas de Avaliação </a></li>-->
+                        <li><a href="<?= base_url('/professor/tema') ?>"></i> Temas</a></li>
                         <li><a href="<?= base_url('/professor/jogo') ?>"></i> Jogos </a></li>
                         <li><a href="<?= base_url('/professor/objaprendizagem') ?>"></i> Conteúdos </a></li>
                         <li class"dropdown">
@@ -77,14 +77,12 @@
         <!-- /col-3 -->
         
         <div class="col-sm-9">
-            <h4>Tema</h4>
+            <h4>Cadastrar temas</h4>
             <hr>
     
         <form action="<?= base_url('professor/inserirtema/') ?>" method="POST" role="form">
         
-        <div class="modal-header">
-          <h4 class="modal-title">Inserir</h4>
-        </div>
+        
         <div class="modal-body">
             
         <div class="form-group">

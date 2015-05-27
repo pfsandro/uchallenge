@@ -51,8 +51,8 @@
                   
                         <li class="active"><a href="<?= base_url('professor') ?>">Home</a></li>
 
-                        <li><a href="<?= base_url('professor/area') ?>"></i> Areas Conhecimento </a></li>
-                        <li><a href="<?= base_url('/professor/areaavalia') ?>"></i> Areas de Avaliação </a></li>
+                        <!-- <li><a href="<?= base_url('professor/area') ?>"></i> Areas Conhecimento </a></li>-->
+                        <!--<li><a href="<?= base_url('/professor/areaavalia') ?>"></i> Areas de Avaliação </a></li>-->
                         <li><a href="<?= base_url('/professor/tema') ?>"></i> Temas </a></li>
                         <li><a href="<?= base_url('/professor/jogo') ?>"></i> Jogos </a></li>
                         <li><a href="<?= base_url('/professor/objaprendizagem') ?>"></i> Conteúdos </a></li>
