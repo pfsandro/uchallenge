@@ -64,10 +64,10 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'localhost',
-	'username' => 'root',
-	'password' => '',
-	'database' => 'ujogo',
+	'hostname' => 'us-cdbr-azure-west-b.cleardb.com',
+	'username' => 'b33ee62ea266f2',
+	'password' => 'ba2dfc4b',
+	'database' => 'uchallengedb',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
