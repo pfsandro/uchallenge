@@ -1,28 +1,11 @@
-<ion-header-bar class="bar-stable">
+<ion-header-bar class="bar-energized">
 	<h1 class="title">Uchallenge</h1>
 </ion-header-bar>
 <ion-content>
-	<ion-tabs>
-
-		<ion-tab title="Quiz">
-			<p>Quiz</p>
-		</ion-tab>
-
-		<ion-tab title="Perguntas">
-			<p>Perguntas</p>
-		</ion-tab>
-
-		<ion-tab title="Desafio">
-			<p>Desafio</p>
-		</ion-tab>
-
-		<ion-tab title="Conteúdos">
-			<p>Conteúdos</p>
-		</ion-tab>
-
-		<ion-tab title="Mapa">
-			<p>Mapa</p>
-		</ion-tab>
-
-	</ion-tabs>
+	<div class="list">
+		<div class="item" ng-click="navigationService.go('/quiz/' + idJogo)">Quiz</div>
+		<div class="item" ng-click="navigationService.go('/problema/' + idJogo)">Problemas</div>
+		<div class="item" ng-click="navigationService.go('/mapa/' + idJogo)">Mapa do Jogo</div>
+		<div class="item" ng-click="navigationService.go('/conteudo/' + idJogo)">Conteudos</div>
+	</div>
 </ion-content>

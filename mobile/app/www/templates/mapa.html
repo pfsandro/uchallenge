@@ -1,0 +1,7 @@
+<ion-header-bar class="bar-energized">
+    <h1 class="title">Uchallenge</h1>
+</ion-header-bar>
+<ion-content>
+    <div ui-map="google.map" ui-options="google.mapOptions" ui-event="{ 'map-idle': 'loadMarkers()' }" class="map-canvas"></div>
+    <div ng-repeat="marker in myMarkers" ui-map-marker="myMarkers[$index]" ui-event="{'map-click': 'openMarkerInfo(marker)'}"></div>
+</ion-content>

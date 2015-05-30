@@ -60,6 +60,35 @@ class Api extends CI_Controller {
         $this->webapi->run();
     }
 
+    public function jogoambiente($id)
+    {
+        $ci = $this;
+        $this->jogo_id = $id;
+        $this->load->library('webapi');
+
+        $this->webapi->method('get', function() use ($ci) {
+            $ci->load->database();
+            $ci->db->select('coordmapa.latitude as lat, coordmapa.longitude as lng, coordmapa.zoom as zoom');
+            $ci->db->join('coordmapa', 'jogos.coordmapa_id = coordmapa.id');
+            $query = $ci->db->get_where('jogos', array('jogos.id' => $ci->jogo_id));
+            $jogo = $query->result_array();
+
+            $ci->db->select('acoes.id as id, coordmapa.latitude as lat, coordmapa.longitude as lng');
+            $ci->db->join('jogos_acoes', 'acoes.id = jogos_acoes.acoes_id');
+            $ci->db->join('coordmapa', 'acoes.coordmapa_id = coordmapa.id', 'left');
+            $query = $ci->db->get_where('acoes', array(
+                'acoes.tipo' => 'D',
+                'jogos_acoes.jogos_id' => $ci->jogo_id
+            ));
+
+            $jogo[0]['desafios'] = $query->result_array();
+
+            return $jogo[0];
+        });
+
+        $this->webapi->run();
+    }
+
 }
 
 /* End of file Api.php */
