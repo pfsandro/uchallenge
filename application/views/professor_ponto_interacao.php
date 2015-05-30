@@ -143,6 +143,7 @@
             return j.id == id;
           });
           map.setCenter(jogo[0].latitude, jogo[0].longitude);
+          map.setZoom(parseInt(jogo[0].zoom));
           $scope.zoom = jogo[0].zoom;
           $scope.acoes_id = jogo[0].acoes_id;
           $scope.jogo_id = jogo[0].id;
