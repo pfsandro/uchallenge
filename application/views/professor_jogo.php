@@ -84,7 +84,7 @@
         </div>
         <!-- /col-3 -->
         <div class="col-sm-9">
-            <h4>New Game</h4>
+            <h4>Novo jogo</h4>
             <hr>
 
 		<form action="<?= base_url('professor/inserirjogo/') ?>" method="POST" role="form">
@@ -93,13 +93,13 @@
 						
 					<div class="form-group">
 
-						<label for="nome">Name</label>
-						<input type="text" name="nome" class="form-control" id="nome" placeholder="Digite Nome do Jogo">
+						<label for="nome">Nome</label>
+						<input type="text" name="nome" class="form-control" id="nome" placeholder="Digite o nome do Jogo">
 					</div>
 				<div class="row">
 					<div class="col-md-5">	
 						<div class="form-group">
-							<label for="areac">Area of knowledge</label>		
+							<label for="areac">Área de conhecimento</label>		
 							<select name="idareac"  class"form-control" id="areac">
 								<option value="0"> ----</option>
 								<?php foreach ($areasc as $areac){?>
@@ -110,7 +110,7 @@
 					</div>
 					<div class="col-md-4">
 						<div class="form-group">
-							<label for="areaa">Assessment area</label>		
+							<label for="areaa">Área de avaliação/Disciplina</label>		
 							<select name="idareaa"  class"form-control" id="areaa">
 								<option value="0"> ----</option>
 								<?php foreach ($areasa as $areaa){?>
@@ -121,7 +121,7 @@
 					</div>
 					<div class="col-md-3">	
 						<div class="form-group">
-							<label for="tema">theme</label>		
+							<label for="tema">Tema do jogo</label>		
 							<select name="idtema"  class"form-control" id="tema">
 								<option value="0"> ----</option>
 								<?php foreach ($temas as $tema){?>
@@ -138,7 +138,7 @@
 					<div style="height: 300px; width: 100%" id="map"></div>
 					<div class="modal-footer">
 
-					<button type="submit" class="btn btn-primary">Subscribe</button>
+					<button type="submit" class="btn btn-primary">Cadastrar</button>
 				</div>
 			</form>
 	     </div>

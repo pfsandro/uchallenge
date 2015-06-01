@@ -87,7 +87,7 @@
             
         <div class="form-group">
             <label for="nome">Nome</label>
-            <input type="text" name="nome" class="form-control" id="" placeholder="Digite a área de conhecimento">
+            <input type="text" name="nome" class="form-control" id="" placeholder="Digite o tema do jogo">
           </div>
           
         </div>
