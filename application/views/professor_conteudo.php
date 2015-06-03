@@ -98,8 +98,8 @@
 						
 					<div class="form-group">
 							<label for="formato de Arquivo">Tipo de Arquivo</label>		
-							<select name="formato"  class"form-control" id="formato">
-								<option value="0"> selecionar</option>
+							<select name="formato"  class"form-control" id="formato" required>
+								<option value=""> selecionar</option>
 								<option value="pdf"> PDF</option>
 								<option value="mp3"> MP3</option>
 								<option value="avi"> AVI</option>
@@ -111,8 +111,8 @@
 					<div class="col-md-5">	
 						<div class="form-group">
 							<label for="areac">Area conhecimento</label>		
-							<select name="idareac"  class"form-control" id="areac">
-								<option value="0"> ----</option>
+							<select name="idareac"  class"form-control" id="areac" required>
+								<option value="">Selecionar</option>
 								<?php foreach ($areasc as $areac){?>
 								<option value="<?=$areac->id;?>" ><?=$areac->nome; ?></option>
 								<?php } ?>
@@ -122,8 +122,8 @@
 					<div class="col-md-4">
 						<div class="form-group">
 							<label for="areaa">Area avaliação</label>		
-							<select name="idareaa"  class"form-control" id="areaa">
-								<option value="0"> ----</option>
+							<select name="idareaa"  class"form-control" id="areaa" required="required">
+								<option value="">Selecionar</option>
 								<?php foreach ($areasa as $areaa){?>
 								<option value="<?=$areaa->id;?>"><?=$areaa->nome; ?></option>
 								<?php } ?>
@@ -133,8 +133,8 @@
 					<div class="col-md-3">	
 						<div class="form-group">
 							<label for="tema">Tema</label>		
-							<select name="idtema"  class"form-control" id="tema">
-								<option value="0"> ----</option>
+							<select name="idtema"  class"form-control" id="tema" required>
+								<option value="">Selecionar</option>
 								<?php foreach ($temas as $tema){?>
 								<option value="<?=$tema->id;?>"><?=$tema->nome; ?></option>
 								<?php } ?>
@@ -143,7 +143,7 @@
 						
 					</div>
 				</div>
-					<input type="file" name="userfile" />
+					<input type="file" name="userfile" required />
 
 					<div class="modal-footer">
 

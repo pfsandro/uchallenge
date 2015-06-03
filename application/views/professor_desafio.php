@@ -101,15 +101,15 @@
 						
 					<div class="form-group">
 						<label for="nome">Ação</label>
-						<input type="text" name="nome" class="form-control" id="nome" placeholder="Digite o desafio ou problema">
+						<input type="text" name="nome" class="form-control" id="nome" placeholder="Digite o desafio ou problema" required>
 					</div>
 					
 				<div class="row">
 					<div class="col-md-6">
 						<div class="form-group">
 							<label for="tipo">Tipo de Ação</label>
-					   		<select name="tipo"  class"form-control" id="tipo">
-								<option value="0"> selecionar</option>
+					   		<select name="tipo"  class"form-control" id="tipo" required>
+								<option value=""> selecionar</option>
 								<option value="D"> Desafio</option>
 								<option value="P"> Problema </option>
 							</select>
@@ -118,8 +118,8 @@
 					<div class="col-md-6">		
 						<div class="form-group">
 							<label for="objpedagogico">Objetivo Pedagógico</label>		
-							<select name="objpedagogico"  class"form-control" id="objpedagogico">
-								<option value="0"> selecionar</option>
+							<select name="objpedagogico"  class"form-control" id="objpedagogico" required>
+								<option value=""> selecionar</option>
 								<option value="lembrar"> Lembrar</option>
 								<option value="entender"> Entender</option>
 								<option value="aplicar"> Aplicar</option>
@@ -133,8 +133,8 @@
 					<div class="col-md-6">		
 						<div class="form-group">
 							<label for="areac">Area conhecimento</label>		
-							<select name="idareac"  class"form-control" id="areac">
-								<option value="0"> Selecionar</option>
+							<select name="idareac"  class"form-control" id="areac" required>
+								<option value=""> Selecionar</option>
 								<?php foreach ($areasc as $areac){?>
 								<option value="<?=$areac->id;?>"><?=$areac->nome; ?></option>
 								<?php } ?>
@@ -144,8 +144,8 @@
 					<div class="col-md-6">	
 						<div class="form-group">
 							<label for="areaa">Area avaliação</label>		
-							<select name="idareaa"  class"form-control" id="areaa">
-								<option value="0"> Selecionar</option>
+							<select name="idareaa"  class"form-control" id="areaa" required>
+								<option value=""> Selecionar</option>
 								<?php foreach ($areasa as $areaa){?>
 								<option value="<?=$areaa->id;?>"><?=$areaa->nome; ?></option>
 								<?php } ?>
@@ -155,8 +155,8 @@
 				</div> 
 						<div class="form-group">
 							<label for="tema">Tema</label>		
-							<select name="idtema"  class"form-control" id="tema">
-								<option value="0"> Selecionar</option>
+							<select name="idtema"  class"form-control" id="tema" required>
+								<option value=""> Selecionar</option>
 								<?php foreach ($temas as $tema){?>
 								<option value="<?=$tema->id;?>"><?=$tema->nome; ?></option>
 								<?php } ?>
@@ -167,7 +167,7 @@
 					<div class="form-group">
 
 						<label for="resposta">Resposta</label>
-						<input type="text" name="resposta" class="form-control" id="resposta" placeholder="Digite a resposta">
+						<input type="text" name="resposta" class="form-control" id="resposta" placeholder="Digite a resposta" required>
 					</div>
 					</div>
 					<div class="modal-footer">

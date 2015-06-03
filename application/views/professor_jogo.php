@@ -102,14 +102,14 @@
 					<div class="form-group">
 
 						<label for="nome">Nome</label>
-						<input type="text" name="nome" class="form-control" id="nome" placeholder="Digite o nome do Jogo">
+						<input type="text" name="nome" class="form-control" id="nome" placeholder="Digite o nome do Jogo" required>
 					</div>
 				<div class="row">
 					<div class="col-md-5">	
 						<div class="form-group">
 							<label for="areac">Área de conhecimento</label>		
-							<select name="idareac"  class"form-control" id="areac">
-								<option value="0"> ----</option>
+							<select name="idareac"  class"form-control" id="areac" required>
+								<option value="">Selecionar</option>
 								<?php foreach ($areasc as $areac){?>
 								<option value="<?=$areac->id;?>"><?=$areac->nome; ?></option>
 								<?php } ?>
@@ -119,8 +119,8 @@
 					<div class="col-md-4">
 						<div class="form-group">
 							<label for="areaa">Área de avaliação/Disciplina</label>		
-							<select name="idareaa"  class"form-control" id="areaa">
-								<option value="0"> ----</option>
+							<select name="idareaa"  class"form-control" id="areaa" required>
+								<option value="">Selecionar</option>
 								<?php foreach ($areasa as $areaa){?>
 								<option value="<?=$areaa->id;?>"><?=$areaa->nome; ?></option>
 								<?php } ?>
@@ -130,8 +130,8 @@
 					<div class="col-md-3">	
 						<div class="form-group">
 							<label for="tema">Tema do jogo</label>		
-							<select name="idtema"  class"form-control" id="tema">
-								<option value="0"> ----</option>
+							<select name="idtema"  class"form-control" id="tema" required>
+								<option value="">Selecionar</option>
 								<?php foreach ($temas as $tema){?>
 								<option value="<?=$tema->id;?>"><?=$tema->nome; ?></option>
 								<?php } ?>

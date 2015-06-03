@@ -95,7 +95,7 @@
             
         <div class="form-group">
             <label for="nome">Nome</label>
-            <input type="text" name="nome" class="form-control" id="" placeholder="Digite o tema do jogo">
+            <input type="text" name="nome" class="form-control" id="" placeholder="Digite o tema do jogo" required>
           </div>
           
         </div>

@@ -101,15 +101,15 @@
 						
 					<div class="form-group">
 						<label for="nome">Pergunta</label>
-						<input type="text" name="nome" class="form-control" id="nome" placeholder="Digite o desafio ou problema">
+						<input type="text" name="nome" class="form-control" id="nome" placeholder="Digite o desafio ou problema" required>
 					</div>
 				
 			<div class="row">
 				<div class="col-md-6">
 					<div class="form-group">
 						<label for="objpedagogico">Objetivo Pedagógico</label>		
-						<select name="objpedagogico"  class"form-control" id="objpedagogico">
-							<option value="0"> selecionar</option>
+						<select name="objpedagogico"  class"form-control" id="objpedagogico" required>
+							<option value=""> selecionar</option>
 							<option value="lembrar"> Lembrar</option>
 							<option value="entender"> Entender</option>
 							<option value="aplicar"> Aplicar</option>
@@ -121,8 +121,8 @@
 				<div class="col-md-6">	
 					<div class="form-group">
 						<label for="areac">Area conhecimento</label>		
-						<select name="idareac"  class"form-control" id="areac">
-							<option value="0"> Selecionar</option>
+						<select name="idareac"  class"form-control" id="areac" required>
+							<option value=""> Selecionar</option>
 							<?php foreach ($areasc as $areac){?>
 								<option value="<?=$areac->id;?>"><?=$areac->nome; ?></option>
 							<?php } ?>
@@ -134,8 +134,8 @@
 				<div class="col-md-6">	
 					<div class="form-group">
 						<label for="areaa">Area avaliação</label>		
-						<select name="idareaa"  class"form-control" id="areaa">
-							<option value="0"> Selecionar</option>
+						<select name="idareaa"  class"form-control" id="areaa" required>
+							<option value=""> Selecionar</option>
 							<?php foreach ($areasa as $areaa){?>
 							<option value="<?=$areaa->id;?>"><?=$areaa->nome; ?></option>
 							<?php } ?>
@@ -145,8 +145,8 @@
 				<div class="col-md-6">	
 					<div class="form-group">
 						<label for="tema">Tema</label>		
-						<select name="idtema"  class"form-control" id="tema">
-							<option value="0"> Selecionar</option>
+						<select name="idtema"  class"form-control" id="tema" required>
+							<option value=""> Selecionar</option>
 							<?php foreach ($temas as $tema){?>
 							<option value="<?=$tema->id;?>"><?=$tema->nome; ?></option>
 							<?php } ?>
@@ -157,17 +157,17 @@
 					<div class="form-group">
 
 						<label for="resposta">Resposta verdadeira</label>
-						<input type="text" name="resposta" class="form-control" id="resposta" placeholder="Digite a resposta verdadeira">
+						<input type="text" name="resposta" class="form-control" id="resposta" placeholder="Digite a resposta verdadeira" required>
 					</div>
 					<div class="form-group">
 
 						<label for="respostaf1">Resposta Falsa</label>
-						<input type="text" name="respostaf1" class="form-control" id="respostaf1" placeholder="Digite resposta falsa">
+						<input type="text" name="respostaf1" class="form-control" id="respostaf1" placeholder="Digite resposta falsa" required>
 					</div>
 					<div class="form-group">
 
 						<label for="respostaf2">Resposta falsa</label>
-						<input type="text" name="respostaf2" class="form-control" id="respostaf2" placeholder="Digite resposta falsa">
+						<input type="text" name="respostaf2" class="form-control" id="respostaf2" placeholder="Digite resposta falsa" required>
 					</div>
 					</div>
 					<div class="modal-footer">
