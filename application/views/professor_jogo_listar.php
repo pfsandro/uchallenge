@@ -4,7 +4,7 @@
 	<meta name="viewport" content="initial-scale=1.0, user-scalable=no">
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Cadastro de Desafios</title>
+	<title>Listar Jogos</title>
     <script src="http://maps.google.com/maps/api/js?sensor=true" type="text/javascript"></script>
     <script src="<?= base_url('/assets/js/gmaps/gmaps.js') ?>" type="text/javascript"></script>
 </script>
@@ -54,7 +54,7 @@
                         <!-- <li><a href="<?= base_url('professor/area') ?>"></i> Areas Conhecimento </a></li>-->
                         <!--<li><a href="<?= base_url('/professor/areaavalia') ?>"></i> Areas de Avaliação </a></li>-->
                         <li><a href="<?= base_url('/professor/tema') ?>"></i> Temas </a></li>
-                         <li class"dropdown">
+                        <li class"dropdown">
                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                               Jogos
                               <span class="caret"></span></a>
@@ -62,8 +62,13 @@
                               <li><a href="<?= base_url('/professor/jogo') ?>">Cadastro</a></li>
                               <li><a href="<?= base_url('/professor/jogol') ?>">Listar</a></li>  
                            </ul>
-                         </li> 
+                         </li>  
+
                         <li><a href="<?= base_url('/professor/objaprendizagem') ?>"></i> Conteúdos </a></li>
+                        
+
+
+
                         <li class"dropdown">
   							           <a class="dropdown-toggle" data-toggle="dropdown" href="#">
    				 				            Ações
@@ -96,22 +101,20 @@
 				<table id="lista" class="table table-striped">
         <thead>
   				<tr>
-  					<th> ID Quiz </th>
-  					<th> Questão</th>
+  					<th> Nome</th>
   					<th> Tema </th>
   					<th> Alterar </th>
   					<th> Excluir</th>
   				</tr>
         </thead>
         <tbody>
-    			<?php foreach ($acoes as $acao) {?>
+    			<?php foreach ($jogos as $jogo) {?>
       				
       			<tr>
-      				<td><?=$acao->id;?></td>
-      				<td><?=$acao->nome;?></td>	
-      				<td><?=$acao->tema;?></td>	
-      				<td><a href="<?=base_url('professor/alterarq/'.$acao->id)?>" class="btn btn-primary">Alterar</a></td>
-      				<td><a href="<?=base_url('professor/excluirq/'.$acao->id)?>" class="btn btn-danger" onclick="return confirm('Deseja realmente excluir registro?');">excluir</a></td>	
+      				<td><?=$jogo->nome;?></td>	
+      				<td><?=$jogo->tema;?></td>	
+      				<td><a href="<?=base_url('professor/alterarj/'.$jogo->id)?>" class="btn btn-primary">Alterar</a></td>
+      				<td><a href="<?=base_url('professor/excluirj/'.$jogo->id)?>" class="btn btn-danger" onclick="return confirm('Deseja realmente excluir registro?');">excluir</a></td>	
       				
       						
       			</tr>

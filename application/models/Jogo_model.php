@@ -25,9 +25,13 @@ class Jogo_model extends CI_Model {
     }
  
 	function listar() {
-		$query = $this->db->get('jogos');
-		return $query->result();
+        $this->db->select('jogos.nome, jogos.id, tema.id as tema_id, tema.nome as tema');
+        $this->db->from('jogos');
+        $this->db->join('tema', 'jogos.tema_id = tema.id');
+        $query = $this->db->get();
+      //  var_dump($query->result());
+        return $query->result();
+  
+    }
 
-     
-	}
 }

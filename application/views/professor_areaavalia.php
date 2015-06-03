@@ -48,7 +48,16 @@
                         <li><a href="<?= base_url('professor/area') ?>"></i> Areas Conhecimento </a></li>
                         <li><a href="<?= base_url('professor') ?>">Home</a></li>
                         <li><a href="<?= base_url('/professor/tema') ?>"></i> Temas </a></li>
-                        <li><a href="<?= base_url('/professor/jogo') ?>"></i> Jogos </a></li>
+                        <li class"dropdown">
+                           <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                              Jogos
+                              <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                              <li><a href="<?= base_url('/professor/jogo') ?>">Cadastro</a></li>
+                              <li><a href="<?= base_url('/professor/jogol') ?>">Listar</a></li>  
+                           </ul>
+                         </li>  
+
                         <li><a href="<?= base_url('/professor/objaprendizagem') ?>"></i> Conteúdos </a></li> 
                         <li class"dropdown">
   							           <a class="dropdown-toggle" data-toggle="dropdown" href="#">
